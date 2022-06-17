@@ -1,24 +1,60 @@
-import React from 'react';
-import '../register/Home.css';
+import React, { useState, useRef} from 'react';
+import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Draggable  from 'react-draggable'; 
-// import { makeStyles } from '@mui/styles';
-// import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-// Draggable.create('#inputone')
+import '../register/Home.css';
+import 'animate.css';
 
 
 function Home() {
 
+  const [username, setUsername] = useState('')
+  const [userpass, setUserpass] = useState('')
+
+  const fade = useRef()
+  const navigate = useNavigate()
+
+
+
+
+
+  const handleInputOne = (event) => {
+    setUsername(event.target.value)
+  }
+
+  const handleInputTwo = (event) => {
+    setUserpass(event.target.value)
+
+         
+  }
+
+  const goFetch = () => {
+    fetch('http://localhost:4000/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        username: username,
+        password: userpass
+      }),
+    })
+    fade.current.className = 'row animate__fadeOut animate__delay-3s'
+
+    setTimeout(() => {
+      navigate('/intro')
+    }, 3000);
+  }
 
   return (
 
 
-    <div className='row'>
+    <div ref={fade} className='row animate__fadeIn animate__delay-3s'>
+
       <img className='tree' src='tree.jpg' alt='tree'/>
+
       <Box>
-      <Typography variant="h2" style={{
+        <Typography variant="h2" style={{
       color: 'white', 
       fontSize: '100px',
       fontFamily: 'Source Sans Pro, sans-serif',
@@ -27,35 +63,40 @@ function Home() {
       fontWeight: '1000',
       }} gutterBottom component="div">
 
-      TYPE YOUR NAME
+          TYPE YOUR NAME
 
-      </Typography>
+        </Typography>
       </Box>
 
-      <input 
+      <Draggable>
+        <input 
+      onClick={goFetch}
+      type="button" 
       className='input' 
+      value={'tap me'}
+      />
+      </Draggable>
+
+      <Draggable>
+        <input 
+      onChange={handleInputOne}
+      className='inputone' 
       type="text" 
+      placeholder='name'
       />
+      </Draggable>
 
       <Draggable>
-      <input 
+        <input 
+      onChange={handleInputTwo}
       className='inputone' 
       type="text" 
-      readonly="readonly"
+      placeholder='password'
       />
       </Draggable>
 
       <Draggable>
-      <input 
-      className='inputone' 
-      type="text"  
-      readonly="readonly"
-
-      />
-      </Draggable>
-
-      <Draggable>
-      <input 
+        <input 
       className='inputone' 
       type="text"  
       readonly="readonly"
@@ -63,9 +104,25 @@ function Home() {
       </Draggable>
 
       <Draggable>
-      <input 
+        <input 
       className='inputone' 
       type="text"  
+      readonly="readonly"
+      />
+      </Draggable>
+
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="text"  
+      readonly="readonly"
+      />
+      </Draggable>
+  
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="password" 
       readonly="readonly"
       />
       </Draggable>
