@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../store';
 import Home from '../register/Home.jsx';
+import ChapterOne from '../chapterOne/ChapterOne.jsx';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
 
       <Route path="/" element={<Home/>}/>
+      <Route path="/chapterone" element={<ChapterOne/>}/>
 
         {/* Названия рутов и компонентов прописать самостоятельно  */}
         {/* <Route path="restlist" element={<RestList/>}/>
