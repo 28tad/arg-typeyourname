@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Draggable  from 'react-draggable'; 
@@ -11,31 +11,39 @@ function Home() {
   const [username, setUsername] = useState('')
   const [userpass, setUserpass] = useState('')
 
+  const fade = useRef()
+
+
+
 
 
   const handleInputOne = (event) => {
-    if (event.key === 'Enter') {
-      setUsername(event.target.value)
-    }
+    setUsername(event.target.value)
   }
+
   const handleInputTwo = (event) => {
-    if (event.key === 'Enter') {
-      setUserpass(event.target.value)
-      fetch('/', {
-        method: 'POST',
-        body: JSON.stringify({
-          username: username,
-          password: userpass,
-        }),
+    setUserpass(event.target.value)
+
+         
+  }
+
+  const goFetch = () => {
+    fetch('http://localhost:4000/', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      })
-    }
+      credentials: 'include',
+      body: JSON.stringify({
+        username: username,
+        password: userpass
+      }),
+    })
+    fade.current.className = 'row animate__fadeOut animate__delay-3s'
   }
 
   return (
 
 
-    <div className='row animate__fadeIn animate__delay-5s'>
+    <div ref={fade} className='row animate__fadeIn animate__delay-3s'>
 
       <img className='tree' src='tree.jpg' alt='tree'/>
 
@@ -54,61 +62,64 @@ function Home() {
         </Typography>
       </Box>
 
-      {!username ? 
-        <>
-          <input 
-      onKeyPress={handleInputOne}
+      <Draggable>
+        <input 
+      onClick={goFetch}
+      type="button" 
       className='input' 
+      value={'tap me'}
+      />
+      </Draggable>
+
+      <Draggable>
+        <input 
+      onChange={handleInputOne}
+      className='inputone' 
       type="text" 
       placeholder='name'
       />
+      </Draggable>
 
-          <Draggable>
-            <input 
+      <Draggable>
+        <input 
+      onChange={handleInputTwo}
       className='inputone' 
       type="text" 
-      readonly="readonly"
-      />
-          </Draggable>
-
-          <Draggable>
-            <input 
-      className='inputone' 
-      type="text"  
-      readonly="readonly"
-      />
-          </Draggable>
-
-          <Draggable>
-            <input 
-      className='inputone' 
-      type="text"  
-      readonly="readonly"
-      />
-          </Draggable>
-
-          <Draggable>
-            <input 
-      className='inputone' 
-      type="text"  
-      readonly="readonly"
-      />
-          </Draggable>
-        </>
-       : 
-        <>
-          <input 
-      onKeyPress={handleInputTwo}
-      className='inputpass' 
-      type="password" 
       placeholder='password'
       />
-        </>
+      </Draggable>
 
-       }
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="text"  
+      readonly="readonly"
+      />
+      </Draggable>
 
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="text"  
+      readonly="readonly"
+      />
+      </Draggable>
 
-
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="text"  
+      readonly="readonly"
+      />
+      </Draggable>
+  
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="password" 
+      readonly="readonly"
+      />
+      </Draggable>
 
        
     </div>

@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const cors = require('cors');
 // const cookiesCleaner = require('cookie-parser');
 
 const sessionConfig = {
@@ -28,6 +29,7 @@ const config = (app) => {
   app.use(morgan('dev'));
   app.use(cookieParser());
   app.use(session(sessionConfig));
+  app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
   // app.use(cookiesCleaner);
 };
 
