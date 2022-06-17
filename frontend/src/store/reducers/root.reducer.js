@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-// import { partyReducer } from './party.reducer';
+// import { regReducer } from './register.reducer';
 
 const rootReducer = combineReducers({
-  // part: partyReducer,
+  // reg: regReducer,
 });
 
 export default rootReducer;
