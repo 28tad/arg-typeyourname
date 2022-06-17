@@ -1,5 +1,5 @@
 const initialState = {
-  // ADD MODEL 
+  // ADD MODEL ьф
   name: "Mark",
   phrase: {},
   hint: {},

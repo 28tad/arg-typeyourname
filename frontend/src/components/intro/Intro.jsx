@@ -1,12 +1,22 @@
-import React, { useRef, useEffect } from 'react';
-import Brightness1Icon from '@mui/icons-material/Brightness1';
+import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
 
 import "./Intro.css"
 
+// MUI 
+import Brightness1Icon from '@mui/icons-material/Brightness1';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Popper from '@mui/material/Popper';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
+
 function Intro() {
+
+  const [click, setClick] = useState(false)
+  const [count, setCount] = useState(0)
   const dispatch = useDispatch();
   const circle = useRef(null);
 
@@ -22,7 +32,16 @@ function Intro() {
   // }
 
   async function expand() {
-    gsap.to(circle.current, {duration: 1, scale: 20 });
+
+    if (!click) {
+      gsap.to(circle.current, { scale: 3 });
+      setCount((prev) => prev + 1)
+      setClick(true)
+    } else {
+      gsap.to(circle.current, { scale: 1 });
+      setClick(false)
+    }
+
 
     const pullPhrase = () => {
         const action = {
@@ -32,7 +51,12 @@ function Intro() {
         dispatch(action);
       }
 
-    console.log(Mark.phrase);
+    pullPhrase()
+
+    if(count === 5) {
+      console.log(Mark.phrase);
+    }
+
   }
  
   return (
@@ -42,6 +66,9 @@ function Intro() {
         style={{ color: "white"}}
         onClick={expand}
       />
+
+      <div style={{color: "white"}}>
+      </div>
     </div>
   );
 }
