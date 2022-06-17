@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef} from 'react';
+import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Draggable  from 'react-draggable'; 
@@ -12,6 +13,7 @@ function Home() {
   const [userpass, setUserpass] = useState('')
 
   const fade = useRef()
+  const navigate = useNavigate()
 
 
 
@@ -38,6 +40,10 @@ function Home() {
       }),
     })
     fade.current.className = 'row animate__fadeOut animate__delay-3s'
+
+    setTimeout(() => {
+      navigate('/intro')
+    }, 3000);
   }
 
   return (
