@@ -33,3 +33,20 @@ gap:50px
   outline: none; 
   color: black
 }
+
+.inputone {
+  position: absolute;
+  margin-top: 639px;
+  width: 400px;
+  height: 90px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10%;
+  font-size: 51px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  background: #ffffff ;
+  text-align: center;
+  outline: none; 
+  color: black
+}

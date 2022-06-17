@@ -2,9 +2,11 @@ import React from 'react';
 import '../register/Home.css';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Draggable  from 'react-draggable'; 
 // import { makeStyles } from '@mui/styles';
 // import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+// Draggable.create('#inputone')
 
 
 function Home() {
@@ -23,16 +25,52 @@ function Home() {
       textAlign: 'center',
       letterSpacing: '30px',
       fontWeight: '1000',
-      
-
       }} gutterBottom component="div">
 
       TYPE YOUR NAME
 
       </Typography>
       </Box>
-      {/* <p className='type'>TYPE YOUR NAME</p> */}
-      <input className='input' type="text"  />
+
+      <input 
+      className='input' 
+      type="text" 
+      />
+
+      <Draggable>
+      <input 
+      className='inputone' 
+      type="text" 
+      readonly="readonly"
+      />
+      </Draggable>
+
+      <Draggable>
+      <input 
+      className='inputone' 
+      type="text"  
+      readonly="readonly"
+
+      />
+      </Draggable>
+
+      <Draggable>
+      <input 
+      className='inputone' 
+      type="text"  
+      readonly="readonly"
+      />
+      </Draggable>
+
+      <Draggable>
+      <input 
+      className='inputone' 
+      type="text"  
+      readonly="readonly"
+      />
+      </Draggable>
+
+       
     </div>
   );
 }
