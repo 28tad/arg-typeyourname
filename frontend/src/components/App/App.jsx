@@ -6,19 +6,19 @@ import Home from '../register/Home.jsx';
 function App() {
   return (
     <Provider store={store}>
-    <div className='App'>
-      <Routes>
+      <div className='App'>
+        <Routes>
 
-      <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home/>}/>
 
-        {/* Названия рутов и компонентов прописать самостоятельно  */}
-        {/* <Route path="restlist" element={<RestList/>}/>
+          {/* Названия рутов и компонентов прописать самостоятельно  */}
+          {/* <Route path="restlist" element={<RestList/>}/>
         <Route path="restlist/:id" element={<RestInfo />}/>
         <Route path="newrest" element={<ModalTop />}/>*/}
 
-      </Routes>
-    </div>
-  </Provider>
+        </Routes>
+      </div>
+    </Provider>
   );
 }
 
