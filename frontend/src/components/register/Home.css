@@ -4,6 +4,8 @@
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
   height: auto;
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 5s;
 }
 
 .row {
@@ -48,5 +50,5 @@ gap:50px
   background: #ffffff ;
   text-align: center;
   outline: none; 
-  color: black
+  color: black;
 }

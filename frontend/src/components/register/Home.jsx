@@ -3,6 +3,7 @@ import '../register/Home.css';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Draggable  from 'react-draggable'; 
+import 'animate.css';
 // import { makeStyles } from '@mui/styles';
 // import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -15,7 +16,7 @@ function Home() {
   return (
 
 
-    <div className='row'>
+    <div className='row animate__fadeIn animate__delay-5s'>
       <img className='tree' src='tree.jpg' alt='tree'/>
       <Box>
       <Typography variant="h2" style={{
