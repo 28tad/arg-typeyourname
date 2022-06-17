@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import store from '../../store';
 import Home from '../register/Home.jsx';
 import ChapterOne from '../chapterOne/ChapterOne.jsx';
+import Intro from '../intro/Intro';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
 
       <Route path="/" element={<Home/>}/>
+      <Route path="/intro" element={<Intro/>}/>
       <Route path="/chapterone" element={<ChapterOne/>}/>
 
         {/* Названия рутов и компонентов прописать самостоятельно  */}

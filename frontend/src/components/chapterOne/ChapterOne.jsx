@@ -7,7 +7,6 @@ import '../chapterOne/chapterOne.css';
 import { useState } from 'react';
 import { gsap } from 'gsap';
 import { useRef } from 'react';
-import { createTheme } from '@mui/material/styles';
 
 function ChapterOne() {
 
@@ -33,6 +32,8 @@ function ChapterOne() {
   ];
 
   const el = useRef(null);
+  const badgeEl = useRef(null);
+
 
   const [value, setValue ] = useState();
   const [notify, setNotify ] = useState();
@@ -43,11 +44,13 @@ function ChapterOne() {
 
   useEffect( () => {
     if(value >= 70 && value <= 80 ) {
-      // gsap.to(el.current, {duration: 3, rotation: 360, scale: 0.5});
-      el.current.style.color = 'green'
       setNotify(1)
+      gsap.to(badgeEl.current, {duration: 1, scale: 2 });
+      gsap.to(el.current, {duration: 1,color: 'green'});
+
     } else {
-      el.current.style.color = 'white'
+      gsap.to(badgeEl.current, {duration: 1, scale: 1});
+      gsap.to(el.current, {duration: 1,color: 'white'});
       setNotify(0)
     }
   }, [value])
@@ -66,7 +69,7 @@ function ChapterOne() {
           valueLabelDisplay="off"
         />
       </Box>
-        <Badge badgeContent={notify} style={{ color: "white"}}>
+        <Badge ref={badgeEl} badgeContent={notify} style={{ color: "white"}}>
          <MailIcon ref={el} style={{ color: "white"}}/>
         </Badge>
     </div>
