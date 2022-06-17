@@ -19,12 +19,12 @@ function ChapterOne() {
       label: '0°C',
     },
     {
-      value: 20,
+      value: 0,
       label: '20°C',
     },
     {
-      value: 37,
-      label: '37°C',
+      value: 75,
+      label: 'SOSI HUY)',
     },
     {
       value: 100,
@@ -35,23 +35,28 @@ function ChapterOne() {
   const el = useRef(null);
 
   const [value, setValue ] = useState();
+  const [notify, setNotify ] = useState();
 
   function valueLabelFormat(value) {
     return marks.findIndex((mark) => mark.value === value) + 1;
   }
 
   useEffect( () => {
-    if(value == 100) {
-      gsap.to(el.current, {duration: 3, rotation: 360, scale: 0.5});
-    } 
+    if(value >= 70 && value <= 80 ) {
+      // gsap.to(el.current, {duration: 3, rotation: 360, scale: 0.5});
+      el.current.style.color = 'green'
+      setNotify(1)
+    } else {
+      el.current.style.color = 'white'
+      setNotify(0)
+    }
   }, [value])
 
 
   return (
     <div className='row'>
-      <Box sx={{ width: 300}}>
+      <Box sx={{ width: 500 }}>
         <Slider
-          size="medium"
           style={{ color: "white"}}
           // aria-label="Restricted values"
           defaultValue={20}
@@ -59,10 +64,9 @@ function ChapterOne() {
           getAriaValueText={setValue}
           step={1}
           valueLabelDisplay="off"
-          marks={marks}
         />
       </Box>
-        <Badge badgeContent={4}>
+        <Badge badgeContent={notify} style={{ color: "white"}}>
          <MailIcon ref={el} style={{ color: "white"}}/>
         </Badge>
     </div>
