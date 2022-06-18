@@ -30,20 +30,21 @@ function Home() {
   }
 
   const goFetch = () => {
-    fetch('http://localhost:4000/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({
-        username: username,
-        password: userpass
-      }),
-    })
-    fade.current.className = 'row animate__fadeOut animate__delay-3s'
-
-    setTimeout(() => {
-      navigate('/intro')
-    }, 3000);
+    if(username && userpass) {
+      fetch('http://localhost:4000/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          username: username,
+          password: userpass
+        }),
+      })
+      fade.current.className = 'row animate__fadeOut animate__delay-3s'
+      setTimeout(() => {
+        navigate('/intro')
+      }, 3000);
+    }
   }
 
   return (
@@ -71,8 +72,6 @@ function Home() {
           </Typography>
         </Box>
       </Draggable>
-
-
 
       <Draggable>
         <input 
