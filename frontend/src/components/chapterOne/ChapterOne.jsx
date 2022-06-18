@@ -7,6 +7,7 @@ import '../chapterOne/chapterOne.css';
 import { useState } from 'react';
 import { gsap } from 'gsap';
 import { useRef } from 'react';
+import CircleOutlined from '@mui/icons-material/CircleOutlined';
 
 function ChapterOne() {
 
@@ -34,7 +35,7 @@ function ChapterOne() {
   const el = useRef(null);
   const badgeEl = useRef(null);
 
-
+  const [ placeholder, setPlaceholder ] = useState('TEST');
   const [value, setValue ] = useState();
   const [notify, setNotify ] = useState();
 
@@ -72,6 +73,9 @@ function ChapterOne() {
         <Badge ref={badgeEl} badgeContent={notify} style={{ color: "white"}}>
          <MailIcon ref={el} style={{ color: "white"}}/>
         </Badge>
+        <h1 style={{ color: "white"}}>
+          {placeholder}
+        </h1>
     </div>
   );
 }
