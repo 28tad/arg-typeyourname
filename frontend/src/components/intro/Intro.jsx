@@ -4,9 +4,10 @@ import Draggable  from 'react-draggable';
 
 import { gsap } from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin'
-// import { TimelineLite, CSSPlugin } from 'gsap/all';
+
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
+import { pullPhrase } from '../../storeToolkit/markSlice';
 
 import "./Intro.css"
 
@@ -18,7 +19,6 @@ import Sun from '@mui/icons-material/WbSunny';
 import CircleOutlined from '@mui/icons-material/CircleOutlined';
 
 function Intro() {
-  const plugins = [ CSSPlugin ];
 
   const [day, setDay ] = useState(true)
   const [click, setClick] = useState(false);
@@ -36,6 +36,7 @@ function Intro() {
   const moonIcon = useRef(null);
   
   const Mark = useSelector((state) => state.mark);
+  // console.log(Mark);
 
   async function expand(e) {
 
@@ -50,50 +51,55 @@ function Intro() {
       setClick(false)
     }
 
-    const pullPhrase = (text) => {
-        const action = {
-          type: 'PULL_PHRASE',
-          payload: text, // fetch response 
-        };
-        dispatch(action);
-      }
+    // const pullPhraseAsync = () => {
+    //   return async dispatch => {
+    //     setTimeout(() => {
+    //       dispatch(pullPhrase('1234'))
+    //       console.log(Mark.phrase);
+    //     }, 1000);
+    //   }
+    // }
 
-      pullPhrase('Эй, зачем ты меня разбудил?')
+      dispatch(pullPhrase('Эй, зачем ты меня разбудил?'))
 
-
-      // if(count === 2) {
-
-      //   function 
-
-      //   function setDayAndWakeUp() {
-      //     setTimeout(() => {
-      //       setPhraseBuff(Mark.phrase);
-
-      //       gsap.to(circle.current, {x: 50, duration: 1})
-      //       gsap.to(placeHolderRef.current, {x: 50, duration: 1})
-
-      //     }, 1000);
-      //   }
-      // }
-      
       if(count === 2) {
         setDay(false);
-        
+
         setTimeout(() => {
 
           setPhraseBuff(Mark.phrase);
+
+          const pullPhraseAsync = () => {
+            return async dispatch1 => {
+              setTimeout(() => {
+                dispatch(pullPhrase('1234'))
+                console.log(Mark.phrase);
+              }, 1000);
+            }
+          }
+
           
           gsap.to(circle.current, {x: 50, duration: 1})
-          gsap.to(placeHolderRef.current, {x: 50, duration: 1})
+          gsap.to(placeHolderRef.current, {x: 50, duration: 1, onComplete:pullPhraseAsync()})
+
+          // async function testFunc() {
+          //   // dispatch(pullPhrase('123'))
+          //   // console.log(Mark.phrase); 
+          // }
+
+          // const pullPhraseAsync = () => {
+          //   return async dispatch => {
+          //     setTimeout(() => {
+          //       dispatch(pullPhrase('1234'))
+          //       console.log(Mark.phrase);
+          //     }, 1000);
+          //   }
+          // }
+
           
           
         }, 1000);
         
-        setTimeout(() => {
-          pullPhrase('Ты кто?')
-          console.log(Mark);
-          setPhraseBuff(Mark.phrase)
-        }, 5000);
       }
   }
 
