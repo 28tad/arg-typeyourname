@@ -50,31 +50,51 @@ function Intro() {
       setClick(false)
     }
 
-
-    const pullPhrase = () => {
+    const pullPhrase = (text) => {
         const action = {
           type: 'PULL_PHRASE',
-          payload: 'Эй, зачем ты меня разбудил??', // fetch response 
+          payload: text, // fetch response 
         };
         dispatch(action);
       }
 
-    pullPhrase()
+      pullPhrase('Эй, зачем ты меня разбудил?')
 
-    if(count === 2) {
-      setDay(false);
 
-      setTimeout(() => {
+      // if(count === 2) {
+
+      //   function 
+
+      //   function setDayAndWakeUp() {
+      //     setTimeout(() => {
+      //       setPhraseBuff(Mark.phrase);
+
+      //       gsap.to(circle.current, {x: 50, duration: 1})
+      //       gsap.to(placeHolderRef.current, {x: 50, duration: 1})
+
+      //     }, 1000);
+      //   }
+      // }
+      
+      if(count === 2) {
+        setDay(false);
         
-        gsap.to(circle.current, {x: 50, duration: 1})
-        gsap.to(placeHolderRef.current, {x: 50, duration: 1})
-        setPhraseBuff(Mark.phrase)
-        // placeHolderRef.current.className = 'animate__animated animate__bounceIn'
-        console.log(phraseBuff);
-        
-      }, 1000);
-    }
+        setTimeout(() => {
 
+          setPhraseBuff(Mark.phrase);
+          
+          gsap.to(circle.current, {x: 50, duration: 1})
+          gsap.to(placeHolderRef.current, {x: 50, duration: 1})
+          
+          
+        }, 1000);
+        
+        setTimeout(() => {
+          pullPhrase('Ты кто?')
+          console.log(Mark);
+          setPhraseBuff(Mark.phrase)
+        }, 5000);
+      }
   }
 
   return (
@@ -113,7 +133,7 @@ function Intro() {
         <h2
           className='placeHolder'
           ref={placeHolderRef}
-          style={{ color: "white", fontSize: "20px", width: "fit-content", margin: 0, position: 'absolute', left: "47%", top: "49%"}}>
+          style={{ color: "white", fontSize: "20px", width: "fit-content", margin: "auto"}}>
           {phraseBuff}
         </h2>
 
@@ -170,7 +190,7 @@ function Intro() {
         <h2 
           className='placeHolder'
           ref={placeHolderRef}
-          style={{ color: "white", fontSize: "20px" ,width: "fit-content", margin: 0, position: 'absolute', left: "47%", top: "49%"}}>
+          style={{ color: "white", fontSize: "20px" ,width: "fit-content", margin: "auto"}}>
           {phraseBuff}
         </h2>
 
