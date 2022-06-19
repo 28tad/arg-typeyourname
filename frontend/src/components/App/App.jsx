@@ -2,6 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../store';
 import Home from '../register/Home.jsx';
+import ChapterOne from '../chapterOne/ChapterOne.jsx';
+import Intro from '../intro/Intro';
+import LevelOne from '../chapterOne/LevelOne.css';
 
 function App() {
   return (
@@ -9,7 +12,12 @@ function App() {
       <div className='App'>
         <Routes>
 
+      <Route path="/" element={<Home/>}/>
+      <Route path="/intro" element={<Intro/>}/>
+      <Route path="/chapterone" element={<ChapterOne/>}/>
           <Route path="/" element={<Home/>}/>
+          <Route path="/chapterone/levelone" element={<LevelOne/>}/>
+          
 
           {/* Названия рутов и компонентов прописать самостоятельно  */}
           {/* <Route path="restlist" element={<RestList/>}/>

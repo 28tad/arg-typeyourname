@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-// import { regReducer } from './register.reducer';
+// import { partyReducer } from './party.reducer';
+import markReducer from './mark.reducer'
 
 const rootReducer = combineReducers({
-  // reg: regReducer,
+  appTitle: () => 'Type Your Name',
+  mark: markReducer
 });
 
 export default rootReducer;
