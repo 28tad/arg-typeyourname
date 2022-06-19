@@ -30,20 +30,21 @@ function Home() {
   }
 
   const goFetch = () => {
-    fetch('http://localhost:4000/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({
-        username: username,
-        password: userpass
-      }),
-    })
-    fade.current.className = 'row animate__fadeOut animate__delay-3s'
-
-    setTimeout(() => {
-      navigate('/intro')
-    }, 3000);
+    if(username && userpass) {
+      fetch('http://localhost:4000/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          username: username,
+          password: userpass
+        }),
+      })
+      fade.current.className = 'row animate__fadeOut animate__delay-3s'
+      setTimeout(() => {
+        navigate('/intro')
+      }, 3000);
+    }
   }
 
   return (
@@ -51,10 +52,13 @@ function Home() {
 
     <div ref={fade} className='row animate__fadeIn animate__delay-3s'>
 
-      <img className='tree' src='tree.jpg' alt='tree'/>
+      <Draggable>
+        <img className='tree' src='tree.jpg' alt='tree'/>
+      </Draggable>
 
-      <Box>
-        <Typography variant="h2" style={{
+      <Draggable>
+        <Box>
+          <Typography variant="h2" style={{
       color: 'white', 
       fontSize: '100px',
       fontFamily: 'Source Sans Pro, sans-serif',
@@ -63,10 +67,11 @@ function Home() {
       fontWeight: '1000',
       }} gutterBottom component="div">
 
-          TYPE YOUR NAME
+            TYPE YOUR NAME
 
-        </Typography>
-      </Box>
+          </Typography>
+        </Box>
+      </Draggable>
 
       <Draggable>
         <input 
