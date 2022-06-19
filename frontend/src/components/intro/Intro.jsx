@@ -38,69 +38,41 @@ function Intro() {
   const Mark = useSelector((state) => state.mark);
   // console.log(Mark);
 
-  async function expand(e) {
 
-    if (!click) {
+  function expand(e) {
+
       gsap.fromTo(alarm.current, { scale: 3 },{ scale: 1 });
       gsap.fromTo(circleOutIcon.current, { scale: 2 },{ scale: 1, duration: 1 });
       gsap.fromTo(circleOutIcon1.current, { scale: 5 },{ scale: 1, duration: 1 });
       gsap.fromTo(circleOutIcon2.current, { scale: 10 },{ scale: 1, duration: 1});
       setCount((prev) => prev + 1)
-      setClick(true)
-    } else {
-      setClick(false)
-    }
-
-    // const pullPhraseAsync = () => {
-    //   return async dispatch => {
-    //     setTimeout(() => {
-    //       dispatch(pullPhrase('1234'))
-    //       console.log(Mark.phrase);
-    //     }, 1000);
-    //   }
-    // }
-
+   
       dispatch(pullPhrase('Эй, зачем ты меня разбудил?'))
 
       if(count === 2) {
         setDay(false);
-
         setTimeout(() => {
-
           setPhraseBuff(Mark.phrase);
-
-          const pullPhraseAsync = () => {
-            return async dispatch1 => {
-              setTimeout(() => {
-                dispatch(pullPhrase('1234'))
-                console.log(Mark.phrase);
-              }, 1000);
-            }
-          }
-
-          
           gsap.to(circle.current, {x: 50, duration: 1})
-          gsap.to(placeHolderRef.current, {x: 50, duration: 1, onComplete:pullPhraseAsync()})
-
-          // async function testFunc() {
-          //   // dispatch(pullPhrase('123'))
-          //   // console.log(Mark.phrase); 
-          // }
-
-          // const pullPhraseAsync = () => {
-          //   return async dispatch => {
-          //     setTimeout(() => {
-          //       dispatch(pullPhrase('1234'))
-          //       console.log(Mark.phrase);
-          //     }, 1000);
-          //   }
-          // }
-
-          
-          
+          gsap.to(placeHolderRef.current, {x: 50, duration: 1})
         }, 1000);
         
       }
+  }
+
+  let clickCount = -1;
+  function dialogue() {
+    const phrases = ['Ты кто такой?', 'Я тебя не знаю', 'Иди нахуй']
+    clickCount += 1
+    console.log(clickCount);
+    if (clickCount <= 3) {
+
+  
+      gsap.fromTo(circle.current, {scale: 2}, {scale: 1, duration: 1})
+      // dispatch(pullPhrase('SUCK MY DICK'))
+      setPhraseBuff(phrases[clickCount])
+
+    }
   }
 
   return (
@@ -207,6 +179,7 @@ function Intro() {
             position: 'absolute',
             left: '49%'
           }}
+          onClick={dialogue}
         />
         
     </div>
