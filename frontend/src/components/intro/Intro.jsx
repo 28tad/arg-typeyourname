@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Draggable  from 'react-draggable'; 
 
 
@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { pullPhrase } from '../../storeToolkit/markSlice';
+import { pullPhrase, countIncrement, fetchPhrases } from '../../storeToolkit/markSlice';
 
 import "./Intro.css"
 
@@ -39,6 +39,14 @@ function Intro() {
   const Mark = useSelector((state) => state.mark);
   // console.log(Mark);
 
+  useEffect(() => {
+    // dispatch(pullPhrase(['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй'])) // FETCHHHH
+    dispatch(fetchPhrases("1"))
+
+    
+    // dispatch(countIncrement())
+  }, [])
+
 
   function expand(e) {
 
@@ -48,17 +56,19 @@ function Intro() {
       gsap.fromTo(circleOutIcon2.current, { scale: 10 },{ scale: 1, duration: 1});
       setCount((prev) => prev + 1)
    
-      dispatch(pullPhrase('Эй, зачем ты меня разбудил?'))
-
+      
       if(count === 2) {
+        console.log(Mark.phrase);
+        setDay(false);
         gsap.to(moonIcon.current, {rotation: 360, duration: 1} )
         setTimeout(() => {
           setTimeout(() => {
             
-            gsap.to(sunIcon.current, {rotation: 360})
+            gsap.to(sunIcon.current, {rotation:"360", duration: 4, ease: 'none', repeat:-1})
           }, 1000);
-          setDay(false);
-          setPhraseBuff(Mark.phrase);
+          
+          setPhraseBuff(Mark.phrase[1][0]);
+          
           gsap.to(circle.current, {x: 50, duration: 1})
           gsap.to(placeHolderRef.current, {x: 50, duration: 1})
         }, 1000);
@@ -66,17 +76,14 @@ function Intro() {
       }
   }
 
-  let clickCount = -1;
   function dialogue() {
-    const phrases = ['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй']
-    clickCount += 1
-    console.log(clickCount);
-    if (clickCount <= 3) {
-
-  
+    dispatch(countIncrement())
+    console.log(Mark.phrase[0].count);
+    if (Mark.phrase[0].count <= 3) {
+      
       gsap.fromTo(circle.current, {scale: 2}, {scale: 1, duration: 1})
       // dispatch(pullPhrase('SUCK MY DICK'))
-      setPhraseBuff(phrases[clickCount])
+      setPhraseBuff(Mark.phrase[1][Mark.phrase[0].count])
 
     }
   }
