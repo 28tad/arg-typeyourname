@@ -34,6 +34,7 @@ function Intro() {
   const placeHolderRef = useRef(null);
   const alarm = useRef(null);
   const moonIcon = useRef(null);
+  const sunIcon = useRef(null);
   
   const Mark = useSelector((state) => state.mark);
   // console.log(Mark);
@@ -50,8 +51,13 @@ function Intro() {
       dispatch(pullPhrase('Эй, зачем ты меня разбудил?'))
 
       if(count === 2) {
-        setDay(false);
+        gsap.to(moonIcon.current, {rotation: 360, duration: 1} )
         setTimeout(() => {
+          setTimeout(() => {
+            
+            gsap.to(sunIcon.current, {rotation: 360})
+          }, 1000);
+          setDay(false);
           setPhraseBuff(Mark.phrase);
           gsap.to(circle.current, {x: 50, duration: 1})
           gsap.to(placeHolderRef.current, {x: 50, duration: 1})
@@ -62,7 +68,7 @@ function Intro() {
 
   let clickCount = -1;
   function dialogue() {
-    const phrases = ['Ты кто такой?', 'Я тебя не знаю', 'Иди нахуй']
+    const phrases = ['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй']
     clickCount += 1
     console.log(clickCount);
     if (clickCount <= 3) {
@@ -155,6 +161,7 @@ function Intro() {
       <div className='center'>
       <Draggable>
       <Sun
+        ref={sunIcon}
         style={{ color: "white"}}
         sx={{
           position: 'absolute',
