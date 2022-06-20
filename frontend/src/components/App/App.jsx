@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import Home from '../register/Home.jsx';
 import ChapterOne from '../chapterOne/ChapterOne.jsx';
 import Intro from '../intro/Intro';
-import LevelOne from '../chapterOne/LevelOne.css';
+import LevelOne from '../ChapterOne/LevelOne.css';
 import store from '../../storeToolkit/index.js';
 
 function App() {
