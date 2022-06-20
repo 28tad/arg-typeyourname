@@ -23,7 +23,7 @@ homeRoute.post('/', async (req, res) => {
       }
     } else {
       const newUser = await User.create({
-        username, password: await bcrypt.hash(password, 5),
+        username, password: await bcrypt.hash(password, 5), isActive: true,
       });
       req.session.user = newUser;
       res.status(200).json('auth');
