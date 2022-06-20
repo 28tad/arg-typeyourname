@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import '../chapterOne/LevelOne.css';
+import './LevelOne.css';
 import 'animate.css';
 
 function LevelOne() {
 
   const [chapter, setChapter] = useState(false)
+  const navigate = useNavigate()
 
   setTimeout(() => {
     setChapter(true)
   }, 5000);
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      if(event.target.value.toLowerCase() === 'Академия Художеств'.toLowerCase()) {
+        setTimeout(() => {
+          navigate('/chapterone/leveltwo')
+        }, 3000);
+        console.log('Молорик');
+      } else {
+        console.log('Давай по новой');
+      }
+    }
+  }
 
   return (
 
@@ -19,7 +33,7 @@ function LevelOne() {
 
       {!chapter ?
     
-        <div className='row'>
+        <div className='row' style={{margin: 'auto'}}>
           <Box className='animate__animated animate__hinge animate__delay-3s'>
             <Typography variant="h2" style={{
       color: 'white', 
@@ -39,7 +53,7 @@ function LevelOne() {
         </div>
       
   :
-        <div className='row'>
+        <div className='row' style={{margin: 'auto'}}>
           <Box className='animate__animated animate__backInUp' >
             <Typography variant="h2" style={{
       color: 'white', 
@@ -64,6 +78,7 @@ function LevelOne() {
             </Typography>
           </Box>
           <input 
+          onKeyPress={handleKeyPress}
       className='inputAnsw animate__animated animate__backInUp' 
       type="text" 
       placeholder='ANSWER'
