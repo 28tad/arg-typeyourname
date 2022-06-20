@@ -2,12 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   name: "Mark",
-    phrase: [{count: 1}],
+    phrase: [],
     hint: {},
+    count: 0,
 }
 
 export const fetchPhrases = createAsyncThunk('Mark/fetchPhrases', async (id) => {
-  const respone = await fetch(`http://localhost:4000/`, {
+  const respone = await fetch(`http://localhost:4000/lines/${id}`, {
     method: 'GET',
     headers: {"Content-Type": "application/json"},
     credentials: 'include',
@@ -23,10 +24,10 @@ export const markSlice = createSlice({
 
   reducers: {
     pullPhrase: (state, action) => {
-      state.phrase.push(action.payload)
+      state.phrase = action.payload
     },
     countIncrement: (state) => {
-      state.phrase[0].count += 1
+      state.count += 1
     }
   },
   extraReducers(builder) {
