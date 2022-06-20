@@ -41,7 +41,7 @@ function Intro() {
 
   useEffect(() => {
     // dispatch(pullPhrase(['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй'])) // FETCHHHH
-    dispatch(fetchPhrases("1"))
+    dispatch(fetchPhrases(1))
 
     
     // dispatch(countIncrement())
@@ -49,7 +49,8 @@ function Intro() {
 
 
   function expand(e) {
-
+    
+      console.log(Mark.phrase);
       gsap.fromTo(alarm.current, { scale: 3 },{ scale: 1 });
       gsap.fromTo(circleOutIcon.current, { scale: 2 },{ scale: 1, duration: 1 });
       gsap.fromTo(circleOutIcon1.current, { scale: 5 },{ scale: 1, duration: 1 });
@@ -58,7 +59,7 @@ function Intro() {
    
       
       if(count === 2) {
-        console.log(Mark.phrase);
+        // console.log(Mark.phrase[1][0][0]);
         setDay(false);
         gsap.to(moonIcon.current, {rotation: 360, duration: 1} )
         setTimeout(() => {
@@ -67,7 +68,7 @@ function Intro() {
             gsap.to(sunIcon.current, {rotation:"360", duration: 4, ease: 'none', repeat:-1})
           }, 1000);
           
-          setPhraseBuff(Mark.phrase[1][0]);
+          setPhraseBuff(Mark.phrase[0][0]);
           
           gsap.to(circle.current, {x: 50, duration: 1})
           gsap.to(placeHolderRef.current, {x: 50, duration: 1})
@@ -77,14 +78,15 @@ function Intro() {
   }
 
   function dialogue() {
+    console.log(Mark.count);
     dispatch(countIncrement())
-    console.log(Mark.phrase[0].count);
-    if (Mark.phrase[0].count <= 3) {
+    if (Mark.count <= Mark.phrase[0].length) {
       
       gsap.fromTo(circle.current, {scale: 2}, {scale: 1, duration: 1})
-      // dispatch(pullPhrase('SUCK MY DICK'))
-      setPhraseBuff(Mark.phrase[1][Mark.phrase[0].count])
+      setPhraseBuff(Mark.phrase[0][Mark.count])
 
+    } else if (Mark.count > Mark.phrase[0].length) {
+      // REDIRECT + ANIMATION
     }
   }
 

@@ -3,7 +3,7 @@ const lineRoute = require('express').Router();
 const { Line } = require('../db/models');
 
 lineRoute.get('/:id', async (req, res) => {
-  console.log(req.params)
+  console.log(req.params);
   try {
     const { id } = req.params;
     console.log(id);

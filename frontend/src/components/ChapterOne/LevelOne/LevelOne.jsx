@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+
 import Box from '@mui/material/Box';
+import Brightness1Icon from '@mui/icons-material/Brightness1';
 import Typography from '@mui/material/Typography';
+
+import { gsap } from 'gsap';
+
+import { pullPhrase, countIncrement, fetchPhrases } from '../../../storeToolkit/markSlice';
+
+
 import './LevelOne.css';
 import 'animate.css';
 
 function LevelOne() {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [phraseBuff, setPhraseBuff] = useState('');
+  const Mark = useSelector((state) => state.mark);
+  const markRef = useRef()
+  const placeHolderRef = useRef(null);
   const [chapter, setChapter] = useState(false)
+
+  useEffect(() => {
+    dispatch(fetchPhrases(2))
+
+  }, [])
 
   setTimeout(() => {
     setChapter(true)
@@ -24,6 +43,19 @@ function LevelOne() {
       } else {
         console.log('Давай по новой');
       }
+    }
+  }
+
+  function dialogue() {
+    console.log(Mark.phrase);
+    dispatch(countIncrement())
+    if (Mark.count <= Mark.phrase[0].length) {
+      
+      gsap.fromTo(markRef.current, {scale: 2}, {scale: 1, duration: 1})
+      setPhraseBuff(Mark.phrase[0][Mark.count])
+
+    } else if (Mark.count > Mark.phrase[0].length) {
+      // REDIRECT + ANIMATION
     }
   }
 
@@ -63,7 +95,7 @@ function LevelOne() {
       textAlign: 'center',
       letterSpacing: '5px',
       fontWeight: '1000',
-      marginTop: '300px'
+      marginTop: '250px'
       }} gutterBottom component="div"> 
       
               35 39 B0 20 42D 442 43E 20 43C 435 441 442 43E 20 441 432 44F 437 430 <br />
@@ -87,6 +119,42 @@ function LevelOne() {
       type="text" 
       placeholder='ANSWER'
       />
+
+            <Typography ref={placeHolderRef} variant="h2" style={{
+                color: 'white', 
+                fontSize: '20px',
+                fontFamily: 'Source Sans Pro, sans-serif',
+                justifyContent: 'center',
+                textAlign: 'center',
+                letterSpacing: '5px',
+                fontWeight: '1000',
+                width: '500px',
+                marginBottom: '200px'
+                }} gutterBottom component="div">
+
+              {phraseBuff} 
+            </Typography>
+
+        {/* <h2 
+          className='placeHolder'
+          ref={placeHolderRef}
+          style={{ color: "white", fontSize: "20px" ,width: "fit-content", margin: "auto"}}>
+          {phraseBuff}
+        </h2> */}
+
+        <Brightness1Icon
+        // className='animate__animated animate__fadeInLeftBig animate__duration-7s' 
+          onClick={dialogue}
+          ref={markRef}
+          style={{ color: "white"}}
+          // ref={circle}
+          sx={{
+            position: 'absolute',
+            left: '49%',
+            bottom: '10%'
+          }}
+        />
+
         </div>
   }
     </>
