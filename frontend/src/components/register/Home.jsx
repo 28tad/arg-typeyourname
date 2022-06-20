@@ -50,7 +50,7 @@ function Home() {
   return (
 
 
-    <div ref={fade} className='row animate__fadeIn animate__delay-3s'>
+    <div ref={fade} className='row animate__fadeIn animate__delay-3s' style={{margin: 'auto'}}>
 
       <Draggable>
         <img className='tree' src='tree.jpg' alt='tree'/>
