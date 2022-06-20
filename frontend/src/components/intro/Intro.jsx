@@ -59,7 +59,7 @@ function Intro() {
         setTimeout(() => {
           setTimeout(() => {
             
-            gsap.to(sunIcon.current, {rotation: 360})
+            gsap.to(sunIcon.current, {rotation:"360", duration: 4, ease: 'none', repeat:-1})
           }, 1000);
           
           setPhraseBuff(Mark.phrase[1][0]);

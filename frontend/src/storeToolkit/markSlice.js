@@ -1,13 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  name: "Mark",
+    phrase: [{count: 1}],
+    hint: {},
+}
+
+export const fetchPhrases = createAsyncThunk('Mark/fetchPhrases', async () => {
+  const respone = await fetch(`http://localhost:4000/lines/${id}`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {"Content-Type": "application/json"}
+  })
+})
 
 export const markSlice = createSlice({
   name: "MarkSlice",
-  initialState: {
-    name: "Mark",
-    phrase: [{count: -1}],
-    counter: 0,
-    hint: {},
-  },
+  initialState: initialState, 
 
   reducers: {
     pullPhrase: (state, action) => {

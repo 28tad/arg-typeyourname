@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import MailIcon from '@mui/icons-material/Mail';
 import Badge from '@mui/material/Badge';
-import '../chapterOne/ChapterOneCss.css';
+import './LevelTwo.css';
 import { useState } from 'react';
 import { gsap } from 'gsap';
 import { useRef } from 'react';

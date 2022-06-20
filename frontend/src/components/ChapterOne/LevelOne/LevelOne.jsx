@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import '../chapterOne/LevelOneCss.css';
+import './LevelOne.css';
 import 'animate.css';
 
 function LevelOne() {

@@ -2,9 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 // import store from '../../store';
 import Home from '../register/Home.jsx';
-import ChapterOne from '../chapterOne/ChapterOne.jsx';
+import LevelTwo from '../ChapterOne/LevelTwo/LevelTwo.jsx';
 import Intro from '../intro/Intro';
-import LevelOne from '../chapterOne/LevelOne';
+import LevelOne from '../ChapterOne/LevelOne/LevelOne';
 import store from '../../storeToolkit/index.js';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
       <Route path="/" element={<Home/>}/>
       <Route path="/intro" element={<Intro/>}/>
-      <Route path="/chapterone" element={<ChapterOne/>}/>
+      <Route path="/chapterone" element={<LevelTwo/>}/>
           <Route path="/" element={<Home/>}/>
           <Route path="/chapterone/levelone" element={<LevelOne/>}/>
           
