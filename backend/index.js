@@ -1,9 +1,9 @@
-const { Line } = require('./db/models');
+// const { Line } = require('./db/models');
 
-async function findLines(id) {
-  const lines = await Line.findAll({ where: { sublevel_id: id }, raw: true, order: [['order', 'ASC']] });
+// async function findLines(id) {
+//   const lines = await Line.findAll({ where: { sublevel_id: id }, raw: true, order: [['order', 'ASC']] });
 
-  console.log(lines);
-}
+//   console.log(lines);
+// }
 
-findLines(1);
+// // findLines(1);
