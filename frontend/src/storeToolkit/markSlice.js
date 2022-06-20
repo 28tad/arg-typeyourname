@@ -6,12 +6,15 @@ const initialState = {
     hint: {},
 }
 
-export const fetchPhrases = createAsyncThunk('Mark/fetchPhrases', async () => {
-  const respone = await fetch(`http://localhost:4000/lines/${id}`, {
+export const fetchPhrases = createAsyncThunk('Mark/fetchPhrases', async (id) => {
+  const respone = await fetch(`http://localhost:4000/`, {
     method: 'GET',
+    headers: {"Content-Type": "application/json"},
     credentials: 'include',
-    headers: {"Content-Type": "application/json"}
   })
+
+  const data = await respone.json();
+  return data
 })
 
 export const markSlice = createSlice({
@@ -25,7 +28,12 @@ export const markSlice = createSlice({
     countIncrement: (state) => {
       state.phrase[0].count += 1
     }
-  } 
+  },
+  extraReducers(builder) {
+    builder.addCase(fetchPhrases.fulfilled, (state, action) => {
+      state.phrase.push(action.payload)
+    })
+  }
 })
 
 export const { pullPhrase, countIncrement } = markSlice.actions

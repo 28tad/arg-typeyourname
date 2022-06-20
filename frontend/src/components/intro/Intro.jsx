@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Draggable  from 'react-draggable'; 
 
 
@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { pullPhrase, countIncrement } from '../../storeToolkit/markSlice';
+import { pullPhrase, countIncrement, fetchPhrases } from '../../storeToolkit/markSlice';
 
 import "./Intro.css"
 
@@ -40,7 +40,10 @@ function Intro() {
   // console.log(Mark);
 
   useEffect(() => {
-    dispatch(pullPhrase(['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй']))
+    // dispatch(pullPhrase(['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй'])) // FETCHHHH
+    dispatch(fetchPhrases("1"))
+
+    
     // dispatch(countIncrement())
   }, [])
 
