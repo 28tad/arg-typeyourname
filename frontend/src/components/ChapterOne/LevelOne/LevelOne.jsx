@@ -59,7 +59,6 @@ function LevelOne() {
     }
   }
 
-
   return (
 
     <>
@@ -78,8 +77,8 @@ function LevelOne() {
       marginTop: '400px'
       }} gutterBottom component="div">
 
-              CHAPTER ONE <br />
-              Level One
+              ГЛАВА ПЕРВАЯ <br />
+              "Искусство"
 
             </Typography>
           </Box>
@@ -134,13 +133,6 @@ function LevelOne() {
 
               {phraseBuff} 
             </Typography>
-
-        {/* <h2 
-          className='placeHolder'
-          ref={placeHolderRef}
-          style={{ color: "white", fontSize: "20px" ,width: "fit-content", margin: "auto"}}>
-          {phraseBuff}
-        </h2> */}
 
         <Brightness1Icon
         // className='animate__animated animate__fadeInLeftBig animate__duration-7s' 

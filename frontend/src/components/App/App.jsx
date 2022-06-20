@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import Home from '../register/Home.jsx';
 import LevelOne from '../ChapterOne/LevelOne/LevelOne.jsx';
 import LevelTwo from '../ChapterOne/LevelTwo/LevelTwo.jsx';
+import LevelThree from '../ChapterOne/LevelThree/LevelThree.jsx';
 import Intro from '../intro/Intro';
 import store from '../../storeToolkit/index.js';
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/intro" element={<Intro/>}/>
           <Route path="/chapterone/levelone" element={<LevelOne/>}/>
           <Route path="/chapterone/leveltwo" element={<LevelTwo/>}/>
+          <Route path="/chapterone/levelthree" element={<LevelThree/>}/>
         </Routes>
 
       </div>
