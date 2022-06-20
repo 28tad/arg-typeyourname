@@ -7,7 +7,6 @@ import './LevelTwo.css';
 import { useState } from 'react';
 import { gsap } from 'gsap';
 import { useRef } from 'react';
-// import CircleOutlined from '@mui/icons-material/CircleOutlined';
 
 function ChapterOne() {
 
