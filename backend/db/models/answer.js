@@ -3,40 +3,32 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Sublevel extends Model {
+  class Answer extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({
-      Level, Hint, UserSublevel, Line, Answer, Response,
-    }) {
-      Sublevel.Level = Sublevel.belongsTo(Level, { foreignKey: 'level_id' });
-      Sublevel.Hint = Sublevel.hasMany(Hint, { foreignKey: 'sublevel_id' });
-      Sublevel.UserSublevel = Sublevel.hasMany(UserSublevel, { foreignKey: 'sublevel_id' });
-      Sublevel.Line = Sublevel.hasMany(Line, { foreignKey: 'sublevel_id' });
-      Sublevel.Answer = Sublevel.hasMany(Answer, { foreignKey: 'sublevel_id' });
-
-      Sublevel.Response = Sublevel.hasMany(Response, { foreignKey: 'sublevel_id' });
+    static associate({ Sublevel }) {
+      Answer.Sublevel = Answer.belongsTo(Sublevel, { foreignKey: 'sublevel_id' });
     }
   }
-  Sublevel.init({
+  Answer.init({
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    title: {
+    answer: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    level_id: {
+    sublevel_id: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: {
-        model: 'Levels',
+        model: 'Sublevels',
         key: 'id',
       },
     },
@@ -50,8 +42,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'Sublevel',
-    tableName: 'Sublevels',
+    modelName: 'Answer',
+    tableName: 'Answers',
   });
-  return Sublevel;
+  return Answer;
 };
