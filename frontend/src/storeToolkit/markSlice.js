@@ -4,18 +4,22 @@ export const markSlice = createSlice({
   name: "MarkSlice",
   initialState: {
     name: "Mark",
-    phrase: '',
+    phrase: [{count: -1}],
+    counter: 0,
     hint: {},
   },
 
   reducers: {
     pullPhrase: (state, action) => {
-      state.phrase = action.payload
+      state.phrase.push(action.payload)
+    },
+    countIncrement: (state) => {
+      state.phrase[0].count += 1
     }
   } 
 })
 
-export const {pullPhrase} = markSlice.actions
+export const { pullPhrase, countIncrement } = markSlice.actions
 export default markSlice.reducer
 
 

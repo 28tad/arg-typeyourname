@@ -3,11 +3,10 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import MailIcon from '@mui/icons-material/Mail';
 import Badge from '@mui/material/Badge';
-import '../chapterOne/chapterOne.css';
+import '../chapterOne/ChapterOneCss.css';
 import { useState } from 'react';
 import { gsap } from 'gsap';
 import { useRef } from 'react';
-import CircleOutlined from '@mui/icons-material/CircleOutlined';
 
 function ChapterOne() {
 
