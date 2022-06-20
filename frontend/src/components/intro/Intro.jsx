@@ -4,9 +4,10 @@ import Draggable  from 'react-draggable';
 
 import { gsap } from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin'
-// import { TimelineLite, CSSPlugin } from 'gsap/all';
+
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
+import { pullPhrase } from '../../storeToolkit/markSlice';
 
 import "./Intro.css"
 
@@ -18,7 +19,6 @@ import Sun from '@mui/icons-material/WbSunny';
 import CircleOutlined from '@mui/icons-material/CircleOutlined';
 
 function Intro() {
-  const plugins = [ CSSPlugin ];
 
   const [day, setDay ] = useState(true)
   const [click, setClick] = useState(false);
@@ -34,67 +34,51 @@ function Intro() {
   const placeHolderRef = useRef(null);
   const alarm = useRef(null);
   const moonIcon = useRef(null);
+  const sunIcon = useRef(null);
   
   const Mark = useSelector((state) => state.mark);
+  // console.log(Mark);
 
-  async function expand(e) {
 
-    if (!click) {
+  function expand(e) {
+
       gsap.fromTo(alarm.current, { scale: 3 },{ scale: 1 });
       gsap.fromTo(circleOutIcon.current, { scale: 2 },{ scale: 1, duration: 1 });
       gsap.fromTo(circleOutIcon1.current, { scale: 5 },{ scale: 1, duration: 1 });
       gsap.fromTo(circleOutIcon2.current, { scale: 10 },{ scale: 1, duration: 1});
       setCount((prev) => prev + 1)
-      setClick(true)
-    } else {
-      setClick(false)
-    }
+   
+      dispatch(pullPhrase('Эй, зачем ты меня разбудил?'))
 
-    const pullPhrase = (text) => {
-        const action = {
-          type: 'PULL_PHRASE',
-          payload: text, // fetch response 
-        };
-        dispatch(action);
-      }
-
-      pullPhrase('Эй, зачем ты меня разбудил?')
-
-
-      // if(count === 2) {
-
-      //   function 
-
-      //   function setDayAndWakeUp() {
-      //     setTimeout(() => {
-      //       setPhraseBuff(Mark.phrase);
-
-      //       gsap.to(circle.current, {x: 50, duration: 1})
-      //       gsap.to(placeHolderRef.current, {x: 50, duration: 1})
-
-      //     }, 1000);
-      //   }
-      // }
-      
       if(count === 2) {
-        setDay(false);
-        
+        gsap.to(moonIcon.current, {rotation: 360, duration: 1} )
         setTimeout(() => {
-
+          setTimeout(() => {
+            
+            gsap.to(sunIcon.current, {rotation: 360})
+          }, 1000);
+          setDay(false);
           setPhraseBuff(Mark.phrase);
-          
           gsap.to(circle.current, {x: 50, duration: 1})
           gsap.to(placeHolderRef.current, {x: 50, duration: 1})
-          
-          
         }, 1000);
         
-        setTimeout(() => {
-          pullPhrase('Ты кто?')
-          console.log(Mark);
-          setPhraseBuff(Mark.phrase)
-        }, 5000);
       }
+  }
+
+  let clickCount = -1;
+  function dialogue() {
+    const phrases = ['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй']
+    clickCount += 1
+    console.log(clickCount);
+    if (clickCount <= 3) {
+
+  
+      gsap.fromTo(circle.current, {scale: 2}, {scale: 1, duration: 1})
+      // dispatch(pullPhrase('SUCK MY DICK'))
+      setPhraseBuff(phrases[clickCount])
+
+    }
   }
 
   return (
@@ -177,6 +161,7 @@ function Intro() {
       <div className='center'>
       <Draggable>
       <Sun
+        ref={sunIcon}
         style={{ color: "white"}}
         sx={{
           position: 'absolute',
@@ -201,6 +186,7 @@ function Intro() {
             position: 'absolute',
             left: '49%'
           }}
+          onClick={dialogue}
         />
         
     </div>
