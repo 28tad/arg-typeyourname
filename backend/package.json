@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dbr": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
-    "dev": "nodemon sercer.js --ignore sessions"
+    "dev": "nodemon server.js --ignore sessions"
   },
   "keywords": [],
   "author": "",
