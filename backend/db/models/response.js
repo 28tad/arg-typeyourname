@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Sublevels }) {
-      Response.Sublevels = Response.belongsTo(Sublevels, { foreignKey: 'sublevel_id' });
+    static associate({ Sublevel }) {
+      Response.Sublevel = Response.belongsTo(Sublevel, { foreignKey: 'sublevel_id' });
     }
   }
   Response.init({
