@@ -34,7 +34,7 @@ function LevelOne() {
 
       {!chapter ?
     
-        <div className='row'>
+        <div className='row' style={{margin: 'auto'}}>
           <Box className='animate__animated animate__hinge animate__delay-3s'>
             <Typography variant="h2" style={{
       color: 'white', 
@@ -54,7 +54,7 @@ function LevelOne() {
         </div>
       
   :
-        <div className='row'>
+        <div className='row' style={{margin: 'auto'}}>
           <Box className='animate__animated animate__backInUp' >
             <Typography variant="h2" style={{
       color: 'white', 

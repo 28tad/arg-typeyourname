@@ -1,8 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import Draggable  from 'react-draggable'; 
 
 
 import { gsap } from 'gsap';
+// import { CSSPlugin } from 'gsap/CSSPlugin'
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,6 +21,7 @@ import CircleOutlined from '@mui/icons-material/CircleOutlined';
 function Intro() {
 
   const [day, setDay ] = useState(true)
+  // const [click, setClick] = useState(false);
   const [count, setCount] = useState(0);
   const [phraseBuff, setPhraseBuff] = useState('zzzzzz.....');
   
