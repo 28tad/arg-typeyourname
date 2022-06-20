@@ -7,13 +7,12 @@ answerRoute.post('/:id', async (req, res) => {
     const { id } = req.params;
     const { answer } = req.body;
 
-    const rigthAnswer = await Answer.findOne({ where: { sublevel_id: id }, raw: true });
-    if (answer.trimEnd().toLowerCase() === rigthAnswer.answer) {
+    const rightAnswer = await Answer.findOne({ where: { sublevel_id: id }, raw: true });
+    if (answer.trimEnd().toLowerCase() === rightAnswer.answer) {
       res.sendStatus(200);
     } else {
       const yaWrong = await Response.findAll({ where: { sublevel_id: id }, raw: true });
-      const response = await yaWrong.json();
-      res.status(409).send(response);
+      res.status(409).json(yaWrong);
     }
   } catch (error) { console.log(error.message); }
 });

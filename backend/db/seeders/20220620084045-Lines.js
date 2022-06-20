@@ -43,6 +43,13 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      body: 'Более поздние воспоминания болезненные. У меня не получается то, что я задумал, я смотрю на чужие работы и мне кажется, что я никогда не смогу сделать также. Я сминаю бумагу и начинаю заново. И снова заново. И снова заново. И снова заново. … Заново. ',
+      order: 3,
+      sublevel_id: 2,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
       body: '3-1 text text long text might be very long text text text long text might be very long texttext text long text might be very long texttext text long text might be very long texttext text long text might be very long texttext text long text might be very long texttext text long text might be very long texttext text long text might be very long texttext text long text might be very long text',
       order: 1,
       sublevel_id: 3,
