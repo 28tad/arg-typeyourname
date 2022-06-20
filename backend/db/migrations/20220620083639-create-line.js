@@ -18,7 +18,7 @@ module.exports = {
       sublevel_id: {
 
         allowNull: false,
-        reference: {
+        references: {
           model: 'Sublevels',
           key: 'id',
         },

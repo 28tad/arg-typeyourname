@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     sublevel_id: {
 
       allowNull: false,
-      reference: {
+      references: {
         model: 'Sublevels',
         key: 'id',
       },
