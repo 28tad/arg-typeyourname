@@ -33,6 +33,8 @@ function Intro() {
   const alarm = useRef(null);
   const moonIcon = useRef(null);
   const sunIcon = useRef(null);
+
+  const hitler = useRef(null)
   
   const Mark = useSelector((state) => state.mark);
 
@@ -56,7 +58,6 @@ function Intro() {
         gsap.to(moonIcon.current, {rotation: 360, duration: 1} )
         setTimeout(() => {
           setTimeout(() => {
-            
             gsap.to(sunIcon.current, {rotation:"360", duration: 4, ease: 'none', repeat:-1})
           }, 1000);
           
@@ -166,17 +167,17 @@ function Intro() {
       :
       <div className='center'>
       <Draggable>
-      <Sun
-        ref={sunIcon}
-        style={{ color: "white"}}
-        sx={{
-          position: 'absolute',
-          top: 40,
-          left: '75%',
-          fontSize: '100px'
-          // width: '75%'
-        }}
-      />
+        <Sun
+          ref={sunIcon}
+          style={{ color: "white"}}
+          sx={{
+            position: 'absolute',
+            top: 40,
+            left: '75%',
+            fontSize: '100px'
+            // width: '75%'
+          }}
+        />
       </Draggable>
         <h2 
           className='placeHolder'
