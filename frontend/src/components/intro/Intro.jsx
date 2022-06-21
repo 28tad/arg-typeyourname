@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import Draggable  from 'react-draggable'; 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { pullPhrase, countIncrement, fetchPhrases } from '../../storeToolkit/markSlice';
+import { countIncrement, fetchPhrases, deletePhrase } from '../../storeToolkit/markSlice';
 //Animations
 import { gsap } from 'gsap';
 import "./Intro.css"
@@ -83,6 +83,7 @@ function Intro() {
         gsap.to(circle.current, {x: 500, opacity: 0,duration: 3, onComplete:fadeOut})
 
         function fadeOut() {
+          dispatch(deletePhrase())
           navigate('/chapterone/levelone')
         }
     }

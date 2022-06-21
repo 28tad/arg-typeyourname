@@ -26,6 +26,10 @@ export const markSlice = createSlice({
     pullPhrase: (state, action) => {
       state.phrase = action.payload
     },
+    deletePhrase: (state) => {
+      state.count = 0
+      state.phrase = []
+    },
     countIncrement: (state) => {
       state.count += 1
     }
@@ -37,7 +41,7 @@ export const markSlice = createSlice({
   }
 })
 
-export const { pullPhrase, countIncrement } = markSlice.actions
+export const { pullPhrase, deletePhrase, countIncrement } = markSlice.actions
 export default markSlice.reducer
 
 
