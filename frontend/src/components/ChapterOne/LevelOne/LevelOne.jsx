@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 
 import Box from '@mui/material/Box';
-import Brightness1Icon from '@mui/icons-material/Brightness1';
 import Typography from '@mui/material/Typography';
+import Brightness1Icon from '@mui/icons-material/Brightness1';
 
 import { gsap } from 'gsap';
 
@@ -30,11 +30,8 @@ function LevelOne() {
   
   const changeRender = setTimeout(() => {
     setChapter(true)
-    
     if(chapter == true) {
-      
     gsap.to(markRef.current, {x: 250, opacity: 1,duration: 3})
-
     }
     clearTimeout(changeRender);
   }, 4000); 
@@ -66,7 +63,6 @@ function LevelOne() {
     }
   }
 
-
   return (
 
     <>
@@ -85,8 +81,8 @@ function LevelOne() {
       marginTop: '400px'
       }} gutterBottom component="div">
 
-              CHAPTER ONE <br />
-              Level One
+              ГЛАВА ПЕРВАЯ <br />
+              "Искусство"
 
             </Typography>
           </Box>
@@ -141,13 +137,6 @@ function LevelOne() {
 
               {phraseBuff} 
             </Typography>
-
-        {/* <h2 
-          className='placeHolder'
-          ref={placeHolderRef}
-          style={{ color: "white", fontSize: "20px" ,width: "fit-content", margin: "auto"}}>
-          {phraseBuff}
-        </h2> */}
 
         <Brightness1Icon
           id = 'Mark'
