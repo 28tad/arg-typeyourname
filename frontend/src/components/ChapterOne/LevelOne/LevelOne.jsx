@@ -34,7 +34,7 @@ function LevelOne() {
     gsap.to(markRef.current, {x: 250, opacity: 1,duration: 3})
     }
     clearTimeout(changeRender);
-  }, 5000); 
+  }, 4000); 
 
 
   const handleKeyPress = (event) => {
@@ -70,7 +70,7 @@ function LevelOne() {
       {!chapter ?
     
         <div className='row' style={{margin: 'auto'}}>
-          <Box className='animate__animated animate__hinge animate__delay-3s'>
+          <Box className='animate__animated animate__hinge animate__delay-2даваcs'>
             <Typography variant="h2" style={{
       color: 'white', 
       fontSize: '55px',
