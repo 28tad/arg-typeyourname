@@ -7,6 +7,7 @@ import LevelTwo from '../ChapterOne/LevelTwo/LevelTwo.jsx';
 import LevelThree from '../ChapterOne/LevelThree/LevelThree.jsx';
 import Intro from '../intro/Intro';
 import store from '../../storeToolkit/index.js';
+import BetweenOne from '../ChapterOne/BetweenOne/BetweenOne.jsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/intro" element={<Intro/>}/>
           <Route path="/chapterone/levelone" element={<LevelOne/>}/>
+          <Route path="/chapterone/beetweenone" element={<BetweenOne/>}/>
           <Route path="/chapterone/leveltwo" element={<LevelTwo/>}/>
           <Route path="/chapterone/levelthree" element={<LevelThree/>}/>
         </Routes>

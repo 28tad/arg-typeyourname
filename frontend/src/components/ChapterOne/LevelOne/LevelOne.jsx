@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 
 import Box from '@mui/material/Box';
-import Brightness1Icon from '@mui/icons-material/Brightness1';
 import Typography from '@mui/material/Typography';
+import Brightness1Icon from '@mui/icons-material/Brightness1';
 
 import { gsap } from 'gsap';
 
@@ -30,11 +30,8 @@ function LevelOne() {
   
   const changeRender = setTimeout(() => {
     setChapter(true)
-    
     if(chapter == true) {
-      
     gsap.to(markRef.current, {x: 250, opacity: 1,duration: 3})
-
     }
     clearTimeout(changeRender);
   }, 5000); 
