@@ -158,10 +158,8 @@ function LevelOne() {
           onClick={dialogue}
           ref={markRef}
           style={{ color: "white", opacity: 0}}
-          // ref={circle}
           sx={{
             position: 'absolute',
-            // left: '49%',
             bottom: '10%'
           }}
         />
