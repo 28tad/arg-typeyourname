@@ -2,6 +2,7 @@ import React from 'react';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+// import { Parallax, ParallaxLayer } from '@react-spring'
 
 function BetweenOne() {
   return (
@@ -21,6 +22,7 @@ function BetweenOne() {
 
       </Typography>
     </Box>
+   
   );
 }
 

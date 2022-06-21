@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/intro" element={<Intro/>}/>
           <Route path="/chapterone/levelone" element={<LevelOne/>}/>
-          <Route path="/chapterone/beetweenone" element={<BetweenOne/>}/>
+          <Route path="/chapterone/betweenone" element={<BetweenOne/>}/>
           <Route path="/chapterone/leveltwo" element={<LevelTwo/>}/>
           <Route path="/chapterone/levelthree" element={<LevelThree/>}/>
         </Routes>
