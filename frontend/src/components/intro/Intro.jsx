@@ -1,16 +1,14 @@
+// REACT
 import React, { useRef, useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
 import Draggable  from 'react-draggable'; 
-
-
-import { gsap } from 'gsap';
-// import { CSSPlugin } from 'gsap/CSSPlugin'
-
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
 import { pullPhrase, countIncrement, fetchPhrases } from '../../storeToolkit/markSlice';
-
+//Animations
+import { gsap } from 'gsap';
 import "./Intro.css"
-
+import "animate.css"
 // MUI 
 import Brightness1Icon from '@mui/icons-material/Brightness1';
 import AlarmIcon from '@mui/icons-material/AccessAlarm';
@@ -35,18 +33,16 @@ function Intro() {
   const alarm = useRef(null);
   const moonIcon = useRef(null);
   const sunIcon = useRef(null);
+
+  const hitler = useRef(null)
   
   const Mark = useSelector((state) => state.mark);
-  // console.log(Mark);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // dispatch(pullPhrase(['Ты кто такой? ', 'Я тебя не знаю', 'Иди нахуй'])) // FETCHHHH
     dispatch(fetchPhrases(1))
-
-    
-    // dispatch(countIncrement())
   }, [])
-
 
   function expand(e) {
     
@@ -56,15 +52,12 @@ function Intro() {
       gsap.fromTo(circleOutIcon1.current, { scale: 5 },{ scale: 1, duration: 1 });
       gsap.fromTo(circleOutIcon2.current, { scale: 10 },{ scale: 1, duration: 1});
       setCount((prev) => prev + 1)
-   
       
       if(count === 2) {
-        // console.log(Mark.phrase[1][0][0]);
         setDay(false);
         gsap.to(moonIcon.current, {rotation: 360, duration: 1} )
         setTimeout(() => {
           setTimeout(() => {
-            
             gsap.to(sunIcon.current, {rotation:"360", duration: 4, ease: 'none', repeat:-1})
           }, 1000);
           
@@ -85,8 +78,13 @@ function Intro() {
       gsap.fromTo(circle.current, {scale: 2}, {scale: 1, duration: 1})
       setPhraseBuff(Mark.phrase[0][Mark.count])
 
-    } else if (Mark.count > Mark.phrase[0].length) {
-      // REDIRECT + ANIMATION
+    } else if (Mark.count >= Mark.phrase[0].length) {
+        console.log('11111');
+        gsap.to(circle.current, {x: 500, opacity: 0,duration: 3, onComplete:fadeOut})
+
+        function fadeOut() {
+          navigate('/chapterone/levelone')
+        }
     }
   }
 
@@ -169,17 +167,17 @@ function Intro() {
       :
       <div className='center'>
       <Draggable>
-      <Sun
-        ref={sunIcon}
-        style={{ color: "white"}}
-        sx={{
-          position: 'absolute',
-          top: 40,
-          left: '75%',
-          fontSize: '100px'
-          // width: '75%'
-        }}
-      />
+        <Sun
+          ref={sunIcon}
+          style={{ color: "white"}}
+          sx={{
+            position: 'absolute',
+            top: 40,
+            left: '75%',
+            fontSize: '100px'
+            // width: '75%'
+          }}
+        />
       </Draggable>
         <h2 
           className='placeHolder'
@@ -206,5 +204,4 @@ function Intro() {
     
   );
 }
-
 export default Intro;
