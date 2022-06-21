@@ -13,7 +13,7 @@ lineRoute.get('/:id', async (req, res) => {
     res.status(200).json(lines2);
   } else {
     const userSublevel = await UserSublevel.findAll({ where: { user_id }, order: [['id', 'DESC']], limit: 1 });
-    console.log(userSublevel);
+  if (userSublevel.length > 0){
     if (Number(id) % 2 === 0) {
       if (Number(id) - userSublevel[0].sublevel_id === 2) {
         const lines = await Line.findAll({ where: { sublevel_id: id }, raw: true, order: [['order', 'ASC']] });
@@ -27,8 +27,8 @@ lineRoute.get('/:id', async (req, res) => {
         const lines2 = lines.map((el) => el = el.body);
         res.status(200).json(lines2);
       } else { res.status(409).json({ text: 'че самый умный штоль' }); }
-    }
-  }
+    } }
+   else {res.sendStatus(409)} }
 });
 
 module.exports = lineRoute;
