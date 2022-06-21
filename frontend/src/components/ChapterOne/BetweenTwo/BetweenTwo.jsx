@@ -30,7 +30,7 @@ function ChapterOne() {
   // }
 
   useEffect( () => {
-    dispatch(fetchPhrases(1))
+    dispatch(fetchPhrases(3))
   }, [])
 
   useEffect( () => {
