@@ -26,12 +26,19 @@ function LevelOne() {
 
   useEffect(() => {
     dispatch(fetchPhrases(2))
-
   }, [])
-
-  setTimeout(() => {
+  
+  const changeRender = setTimeout(() => {
     setChapter(true)
-  }, 5000);
+    
+    if(chapter == true) {
+      
+    gsap.to(markRef.current, {x: 250, opacity: 1,duration: 3})
+
+    }
+    clearTimeout(changeRender);
+  }, 5000); 
+
 
   const handleKeyPress = (event) => {
     if(event.key === 'Enter'){
@@ -55,7 +62,7 @@ function LevelOne() {
       setPhraseBuff(Mark.phrase[0][Mark.count])
 
     } else if (Mark.count > Mark.phrase[0].length) {
-      // REDIRECT + ANIMATION
+      gsap.to(markRef.current, {opacity: 0, duration: 2})
     }
   }
 
@@ -135,14 +142,15 @@ function LevelOne() {
             </Typography>
 
         <Brightness1Icon
-        // className='animate__animated animate__fadeInLeftBig animate__duration-7s' 
+          id = 'Mark'
+          className='Mark' 
           onClick={dialogue}
           ref={markRef}
-          style={{ color: "white"}}
+          style={{ color: "white", opacity: 0}}
           // ref={circle}
           sx={{
             position: 'absolute',
-            left: '49%',
+            // left: '49%',
             bottom: '10%'
           }}
         />
