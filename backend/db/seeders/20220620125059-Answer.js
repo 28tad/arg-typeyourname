@@ -7,7 +7,7 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      answer: 'answer2',
+      answer: 'академия художеств',
       sublevel_id: 2,
       createdAt: new Date(),
       updatedAt: new Date(),
