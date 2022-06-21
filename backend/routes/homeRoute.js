@@ -1,6 +1,6 @@
 const homeRoute = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../db/models');
+const { User, UserSublevel } = require('../db/models');
 
 homeRoute.get('/', (req, res) => {
   res.status(200).json({ text: 'hi' });
@@ -17,7 +17,9 @@ homeRoute.post('/', async (req, res) => {
     if (userName) {
       if (await bcrypt.compare(password, userName.password)) {
         req.session.user = userName;
-        res.status(200).json('login');
+        const level = UserSublevel.findAll({ where: { user_id: userName.id }, order: [['id', 'DESC']], limit: 1 });
+
+        res.status(200).json({ sublevel_id: level[0].sublevel_id });
       } else {
         res.status(401).json({ text: `Я уже знаком с ${username}, и ты не он` });
       }
