@@ -5,6 +5,7 @@ const initialState = {
     phrase: [],
     hint: {},
     count: 0,
+    session: []
 }
 
 export const fetchPhrases = createAsyncThunk('Mark/fetchPhrases', async (id) => {
@@ -25,6 +26,7 @@ export const markSlice = createSlice({
   reducers: {
     pullPhrase: (state, action) => {
       state.phrase = action.payload
+
     },
     deletePhrase: (state) => {
       state.count = 0

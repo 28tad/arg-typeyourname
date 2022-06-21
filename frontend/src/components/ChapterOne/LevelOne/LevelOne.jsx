@@ -37,18 +37,30 @@ function LevelOne() {
   }, 4000); 
 
 
-  const handleKeyPress = (event) => {
+  const handleKeyPress = async (event) => {
     if(event.key === 'Enter'){
-      if(event.target.value.toLowerCase() === 'Академия Художеств'.toLowerCase()) {
-        setTimeout(() => {
-          navigate('/chapterone/leveltwo')
-        }, 3000);
-        console.log('Молорик');
-      } else {
-        console.log('Давай по новой');
-      }
+      // if(event.target.value.toLowerCase() === 'Академия Художеств'.toLowerCase()) {
+        const response = await fetch('http://localhost:4000/answer/2', {
+          method: 'POST',
+          body: JSON.stringify({
+             answer: event.target.value 
+            }),  
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+        })
+
+        const rightAnswer = await response.json();
+        console.log(rightAnswer);
+
+        // if (rightAnswer) {
+        //   setTimeout(() => {
+        //     navigate('/chapterone/leveltwo')
+        //   }, 3000);
+        //   console.log('Молорик');
+        // }
+      } 
     }
-  }
+
 
   function dialogue() {
     console.log(Mark.phrase);

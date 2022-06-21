@@ -23,6 +23,7 @@ function Intro() {
   const [count, setCount] = useState(0);
   const [phraseBuff, setPhraseBuff] = useState('zzzzzz.....');
   
+  const Mark = useSelector((state) => state.mark);
   const dispatch = useDispatch();
   
   const circle = useRef(null);
@@ -33,10 +34,7 @@ function Intro() {
   const alarm = useRef(null);
   const moonIcon = useRef(null);
   const sunIcon = useRef(null);
-
-  const hitler = useRef(null)
   
-  const Mark = useSelector((state) => state.mark);
 
   const navigate = useNavigate();
 
