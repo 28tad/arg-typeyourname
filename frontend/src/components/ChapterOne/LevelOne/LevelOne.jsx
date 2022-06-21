@@ -53,7 +53,7 @@ function LevelOne() {
         if (response.status === 200) {
           console.log('Молорик');
           setTimeout(() => {
-            navigate('/chapterone/leveltwo')
+            navigate('/chapterone/betweenone')
           }, 3000);
         } else {
           const rightAnswer = await response.json();
