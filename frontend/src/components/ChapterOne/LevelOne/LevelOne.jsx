@@ -48,16 +48,18 @@ function LevelOne() {
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
         })
-
-        const rightAnswer = await response.json();
-        console.log(rightAnswer);
-
-        // if (rightAnswer) {
-        //   setTimeout(() => {
-        //     navigate('/chapterone/leveltwo')
-        //   }, 3000);
-        //   console.log('Молорик');
-        // }
+        console.log(response.status);
+        
+        if (response.status === 200) {
+          console.log('Молорик');
+          setTimeout(() => {
+            navigate('/chapterone/leveltwo')
+          }, 3000);
+        } else {
+          const rightAnswer = await response.json();
+          console.log(rightAnswer);
+          console.log(rightAnswer[0].body);
+        }
       } 
     }
 
