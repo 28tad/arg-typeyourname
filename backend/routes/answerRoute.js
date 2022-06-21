@@ -6,7 +6,8 @@ answerRoute.post('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { answer } = req.body;
-    const user_id = req.session.id;
+    const user_id = req.session.user.id;
+    console.log(answer);
 
     const rightAnswer = await Answer.findOne({ where: { sublevel_id: id }, raw: true });
     if (answer.trimEnd().toLowerCase() === rightAnswer.answer) {
