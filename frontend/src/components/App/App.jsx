@@ -2,30 +2,27 @@ import { Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 // import store from '../../store';
 import Home from '../register/Home.jsx';
-import ChapterOne from '../chapterOne/ChapterOne.jsx';
+import LevelOne from '../ChapterOne/LevelOne/LevelOne.jsx';
+import LevelTwo from '../ChapterOne/LevelTwo/LevelTwo.jsx';
+import LevelThree from '../ChapterOne/LevelThree/LevelThree.jsx';
 import Intro from '../intro/Intro';
-import LevelOne from '../ChapterOne/LevelOne.css';
 import store from '../../storeToolkit/index.js';
+import BetweenOne from '../ChapterOne/BetweenOne/BetweenOne.jsx';
 
 function App() {
   return (
     <Provider store={store}>
       <div className='App'>
+
         <Routes>
-
-      <Route path="/" element={<Home/>}/>
-      <Route path="/intro" element={<Intro/>}/>
-      <Route path="/chapterone" element={<ChapterOne/>}/>
           <Route path="/" element={<Home/>}/>
+          <Route path="/intro" element={<Intro/>}/>
           <Route path="/chapterone/levelone" element={<LevelOne/>}/>
-          
-
-          {/* Названия рутов и компонентов прописать самостоятельно  */}
-          {/* <Route path="restlist" element={<RestList/>}/>
-        <Route path="restlist/:id" element={<RestInfo />}/>
-        <Route path="newrest" element={<ModalTop />}/>*/}
-
+          <Route path="/chapterone/betweenone" element={<BetweenOne/>}/>
+          <Route path="/chapterone/leveltwo" element={<LevelTwo/>}/>
+          <Route path="/chapterone/levelthree" element={<LevelThree/>}/>
         </Routes>
+
       </div>
     </Provider>
   );

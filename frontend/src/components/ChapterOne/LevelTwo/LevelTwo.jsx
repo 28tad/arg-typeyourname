@@ -3,34 +3,33 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import MailIcon from '@mui/icons-material/Mail';
 import Badge from '@mui/material/Badge';
-import '../chapterOne/chapterOne.css';
+import './LevelTwo.css';
 import { useState } from 'react';
 import { gsap } from 'gsap';
 import { useRef } from 'react';
-import CircleOutlined from '@mui/icons-material/CircleOutlined';
 
 function ChapterOne() {
 
   
 
-  const marks = [
-    {
-      value: 0,
-      label: '0°C',
-    },
-    {
-      value: 0,
-      label: '20°C',
-    },
-    {
-      value: 75,
-      label: 'SOSI HUY)',
-    },
-    {
-      value: 100,
-      label: 'SLAVA UKRAINE',
-    },
-  ];
+  // const marks = [
+  //   {
+  //     value: 0,
+  //     label: '0°C',
+  //   },
+  //   {
+  //     value: 0,
+  //     label: '20°C',
+  //   },
+  //   {
+  //     value: 75,
+  //     label: 'SOSI HUY)',
+  //   },
+  //   {
+  //     value: 100,
+  //     label: 'SLAVA UKRAINE',
+  //   },
+  // ];
 
   const el = useRef(null);
   const badgeEl = useRef(null);
@@ -39,9 +38,9 @@ function ChapterOne() {
   const [value, setValue ] = useState();
   const [notify, setNotify ] = useState();
 
-  function valueLabelFormat(value) {
-    return marks.findIndex((mark) => mark.value === value) + 1;
-  }
+  // function valueLabelFormat(value) {
+  //   return marks.findIndex((mark) => mark.value === value) + 1;
+  // }
 
   useEffect( () => {
     if(value >= 70 && value <= 80 ) {
