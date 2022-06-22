@@ -8,7 +8,7 @@ import Brightness1Icon from '@mui/icons-material/Brightness1';
 
 import { gsap } from 'gsap';
 
-import { pullPhrase, countIncrement, fetchPhrases } from '../../../storeToolkit/markSlice';
+import { countIncrement, fetchPhrases } from '../../../storeToolkit/markSlice';
 
 
 import './LevelOne.css';
@@ -30,7 +30,7 @@ function LevelOne() {
   
   const changeRender = setTimeout(() => {
     setChapter(true)
-    if(chapter == true) {
+    if(chapter === true) {
     gsap.to(markRef.current, {x: 250, opacity: 1,duration: 3})
     }
     clearTimeout(changeRender);
@@ -39,7 +39,6 @@ function LevelOne() {
 
   const handleKeyPress = async (event) => {
     if(event.key === 'Enter'){
-      // if(event.target.value.toLowerCase() === 'Академия Художеств'.toLowerCase()) {
         const response = await fetch('http://localhost:4000/answer/2', {
           method: 'POST',
           body: JSON.stringify({
@@ -48,16 +47,18 @@ function LevelOne() {
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
         })
-
-        const rightAnswer = await response.json();
-        console.log(rightAnswer);
-
-        // if (rightAnswer) {
-        //   setTimeout(() => {
-        //     navigate('/chapterone/leveltwo')
-        //   }, 3000);
-        //   console.log('Молорик');
-        // }
+        console.log(response.status);
+        
+        if (response.status === 200) {
+          console.log('Молорик');
+          setTimeout(() => {
+            navigate('/chapterone/betweenone')
+          }, 3000);
+        } else {
+          const rightAnswer = await response.json();
+          console.log(rightAnswer);
+          console.log(rightAnswer[0].body);
+        }
       } 
     }
 
@@ -82,7 +83,7 @@ function LevelOne() {
       {!chapter ?
     
         <div className='row' style={{margin: 'auto'}}>
-          <Box className='animate__animated animate__hinge animate__delay-2даваcs'>
+          <Box className='animate__animated animate__hinge animate__delay-2s'>
             <Typography variant="h2" style={{
       color: 'white', 
       fontSize: '55px',
@@ -156,10 +157,8 @@ function LevelOne() {
           onClick={dialogue}
           ref={markRef}
           style={{ color: "white", opacity: 0}}
-          // ref={circle}
           sx={{
             position: 'absolute',
-            // left: '49%',
             bottom: '10%'
           }}
         />
