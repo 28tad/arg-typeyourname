@@ -8,9 +8,16 @@ import { useNavigate } from 'react-router-dom'
 import CircleIcon from '@mui/icons-material/Circle';
 import ArrowForwardIosIcon from '@mui/icons-material/ChevronLeft';
 import { style } from '@mui/system';
+import { useEffect } from 'react';
 // import { Parallax, ParallaxLayer } from '@react-spring'
 
 function BetweenOne() {
+
+  // useEffect( () => {
+
+  //   return removeChild
+  // }, [])
+
   const navigate = useNavigate()
   const text1 = useRef(null);
   const text2 = useRef(null);
@@ -38,6 +45,7 @@ function BetweenOne() {
 
 
     ScrollTrigger.create({
+      id: "t1",
       animation: tl, 
       // start: "top top",
       trigger: ".container",
@@ -49,6 +57,7 @@ function BetweenOne() {
     })
 
     ScrollTrigger.create({
+      id: "t2",
       animation: tlTest, 
       // start: "top top",
       trigger: ".container",
@@ -60,6 +69,7 @@ function BetweenOne() {
     })
 
     ScrollTrigger.create({
+      id: "t3",
       animation: tlMark, 
       // start: "top top",
       trigger: ".container",
@@ -69,6 +79,7 @@ function BetweenOne() {
         if (self.progress.toFixed(1) == 0.8) {
           if(count == false) {
             setTimeout(() => {
+              ScrollTrigger.getById("t1").kill(true); // removes child node (react bug)
               navigate('/chapterone/leveltwo')
             }, 2000);
             count = true
@@ -88,6 +99,7 @@ function BetweenOne() {
     gsap.fromTo(mark.current, {scale: 2}, {scale: 1, duration: 1})
   }
   return (
+    <>
     <div className="container" style={{ fontFamily: 'Source Sans Pro, sans-serif'}}>
     <ArrowForwardIosIcon ref={arrow} sx={{ color: "white", fontSize: "50px", position: "absolute", right: "100px"}}/>
     <CircleIcon 
@@ -114,6 +126,7 @@ function BetweenOne() {
 
     
     </div>
+    </>
    
   );
 }
