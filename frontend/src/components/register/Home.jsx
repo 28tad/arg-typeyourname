@@ -29,7 +29,7 @@ function Home() {
 
   const goFetch = async () => {
     if(username && userpass) {
-     const response = await fetch('http://localhost:4000/', {
+     fetch('http://localhost:4000/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -39,18 +39,13 @@ function Home() {
         }),
       })
 
-      const awaitSession = await response.json()
-      dispatch(sessionAdd(awaitSession))
+      // const awaitSession = await response.json()
 
 
       fade.current.className = 'row animate__fadeOut animate__delay-3s'
       setTimeout(() => {
-        if(session) {
           navigate('/intro')
-        } else {
-          navigate('/')
-        }
-      }, 3000);
+      }, 10000);
     }
   }
 
