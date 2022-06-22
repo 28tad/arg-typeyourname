@@ -62,6 +62,19 @@ function LevelTwo() {
 
           </Typography>
 
+          <Typography variant="h2" style={{
+              color: 'black', 
+              fontSize: '20px',
+              textAlign: 'center',
+              letterSpacing: '5px',
+              fontWeight: '1000',
+              marginTop: '30px'
+              }} gutterBottom component="div">
+
+          https://www.make-info.com/hide-data-in-image-steghide/
+
+          </Typography>
+
         </div>
 
 :

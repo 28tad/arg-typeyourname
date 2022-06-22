@@ -15,18 +15,12 @@ function Home() {
   const fade = useRef()
   const navigate = useNavigate()
 
-
-
-
-
   const handleInputOne = (event) => {
     setUsername(event.target.value)
   }
 
   const handleInputTwo = (event) => {
-    setUserpass(event.target.value)
-
-         
+    setUserpass(event.target.value)     
   }
 
   const goFetch = () => {
@@ -48,7 +42,6 @@ function Home() {
   }
 
   return (
-
 
     <div ref={fade} className='row animate__fadeIn animate__delay-3s' style={{margin: 'auto'}}>
 
@@ -104,7 +97,7 @@ function Home() {
         <input 
       className='inputone' 
       type="text"  
-      readonly="readonly"
+      readOnly="readonly"
       />
       </Draggable>
 
@@ -112,7 +105,7 @@ function Home() {
         <input 
       className='inputone' 
       type="text"  
-      readonly="readonly"
+      readOnly="readonly"
       />
       </Draggable>
 
@@ -120,7 +113,7 @@ function Home() {
         <input 
       className='inputone' 
       type="text"  
-      readonly="readonly"
+      readOnly="readonly"
       />
       </Draggable>
   
@@ -128,11 +121,10 @@ function Home() {
         <input 
       className='inputone' 
       type="password" 
-      readonly="readonly"
+      readOnly="readonly"
       />
       </Draggable>
 
-       
     </div>
   );
 }
