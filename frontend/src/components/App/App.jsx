@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 // import store from '../../store';
 import Home from '../register/Home.jsx';
+import Prologue from '../ChapterOne/Prologue/Prologue.jsx';
 import LevelOne from '../ChapterOne/LevelOne/LevelOne.jsx';
 import BetweenTwo from '../ChapterOne/BetweenTwo/BetweenTwo.jsx';
 import LevelThree from '../ChapterOne/LevelTwo/LevelTwo.jsx';
@@ -19,6 +20,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/prologue" element={<Prologue/>}/>
           <Route path="/intro" element={<Intro/>}/>
           <Route path="/chapterone/levelone" element={<LevelOne/>}/>
           <Route path="/chapterone/betweenone" element={<BetweenOne/>}/>
