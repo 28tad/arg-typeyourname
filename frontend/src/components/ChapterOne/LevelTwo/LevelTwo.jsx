@@ -1,26 +1,19 @@
 import React, { useState } from 'react';
+import { useSpring, animated } from 'react-spring'
+import ReactCardFlip from 'react-card-flip';
+
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useSpring, animated } from 'react-spring'
-import Draggable  from 'react-draggable'; 
+
 import '../LevelTwo/LevelTwo.css'
-
-import { a } from '@react-spring/web'
-
-
 
 function LevelTwo() {
   const [chapter, setChapter] = useState(false)
-  const [flipped, set] = useState(false)
+  const [isFlipped, setFlipped] = useState(false)
 
-  const { transform, opacity } = useSpring({
-    opacity: flipped ? 1 : 0,
-    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-    config: { mass: 5, tension: 500, friction: 80 },
-  })
-
+ 
   const handleFlip = () => {
-    set(state => !state)
+    setFlipped((prev) => !prev)
   }
 
   setTimeout(() => {
@@ -42,11 +35,17 @@ function LevelTwo() {
 
 { chapter ?
 
-<div className='rowtwo'>
+        <div className='rowtwo'>
        
-          <Draggable>
-            <img className='krik' src='../krik.jpg' alt='krik'/>
-          </Draggable>
+          <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+            <div>
+              <img onClick={handleFlip} className='krik' src='../krik.jpg' alt='krik'/>
+            </div>
+
+            <div>
+              <img onClick={handleFlip} className='krik' src='../pass.jpg' alt='krik'/>
+            </div>
+          </ReactCardFlip>
 
           <Typography variant="h2" style={{
               color: 'white', 
@@ -94,18 +93,3 @@ function LevelTwo() {
 }
 
 export default LevelTwo;
-
-
- // <div className='rowtwo container' onClick={handleFlip}>
-        //   <a.div
-        //     className='c back'
-        //     style={{ opacity: opacity.to(o => 1 - o), transform }}
-        //      />
-        //   <a.div
-        //   className='c front'
-        //   style={{
-        //     opacity,
-        //     transform,
-        //     rotateX: '180deg',
-        //   }}
-        // />
