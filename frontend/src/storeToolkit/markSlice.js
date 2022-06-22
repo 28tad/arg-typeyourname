@@ -5,7 +5,6 @@ const initialState = {
     phrase: [],
     hint: {},
     count: 0,
-    session: []
 }
 
 export const fetchPhrases = createAsyncThunk('Mark/fetchPhrases', async (id) => {
