@@ -44,8 +44,8 @@ function Home() {
 
       fade.current.className = 'row animate__fadeOut animate__delay-3s'
       setTimeout(() => {
-          navigate('/intro')
-      }, 10000);
+          navigate('/prologue')
+      }, 3000);
     }
   }
 
