@@ -3,7 +3,7 @@ import './LevelFour.css';
 
 import { useForm } from 'react-hook-form';
 
-function App() {
+function LevelFour() {
 const videoArr = ['eve.mp4', 'str.mp4', 'commercial.mp4', 'metr.mp4', 'tz.mp4', 'static.mp4' ]
 
 const {register, handleSubmit} = useForm()
@@ -41,23 +41,23 @@ function onSubmit(data) {
     <div className='everything'>
     <div className='holderForTV'>
     <div className='tv'>
-      <img className='tv' src='tv/tv_clear3.png' alt=''></img>
+      <img className='tv' src='../tv/tv_clear3.png' alt=''></img>
     </div>
 
    <div className='Holder'>
      <div className='container'>
       <div className='tv_little'>
         {turnOnOf && <video key={videoArr[video]} autoPlay="autoPlay" onEnded={handleVideoChange}>
-          <source src={`video/${videoArr[video]}`}></source>
+          <source src={`../video/${videoArr[video]}`}></source>
         </video>}
         </div>
         </div>
         </div>
         <div className='button' style={{ transform: `rotate(${deg}deg)` }} onClick={handleVideoChange}>
-    <img className='tv-button' src='tv/tv_button.png' alt=''></img>
+    <img className='tv-button' src='../tv/tv_button.png' alt=''></img>
     </div>
     <div className='button' onClick={handleTurn}>
-    <img className='tv-button' src='tv/tv-button2.png' alt=''></img>
+    <img className='tv-button' src='../tv/tv-button2.png' alt=''></img>
     </div>
     <div className='hiddenbutton' onClick={() => setHidden(true)}> 
     </div>
@@ -83,4 +83,4 @@ function onSubmit(data) {
   );
 }
 
-export default App;
+export default LevelFour;

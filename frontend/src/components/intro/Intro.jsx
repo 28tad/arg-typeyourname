@@ -5,6 +5,8 @@ import Draggable  from 'react-draggable';
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
 import { countIncrement, fetchPhrases, deletePhrase } from '../../storeToolkit/markSlice';
+// import { fetchSession } from '../../storeToolkit/sessionSlice';
+
 //Animations
 import { gsap } from 'gsap';
 import "./Intro.css"
@@ -17,7 +19,8 @@ import Sun from '@mui/icons-material/WbSunny';
 import CircleOutlined from '@mui/icons-material/CircleOutlined';
 
 function Intro() {
-
+  const session = useSelector((state) => state.session)
+  console.log(session);
   const [day, setDay ] = useState(true)
   // const [click, setClick] = useState(false);
   const [count, setCount] = useState(0);
@@ -40,6 +43,7 @@ function Intro() {
 
   useEffect(() => {
     dispatch(fetchPhrases(1))
+    // dispatch(fetchSession())
   }, [])
 
   function expand(e) {

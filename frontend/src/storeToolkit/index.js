@@ -13,9 +13,11 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import markReducer  from "./markSlice";
+import sessionReducer from "./sessionSlice"
 
 export default configureStore({
   reducer: {
-    mark: markReducer
+    mark: markReducer,
+    session: sessionReducer
   }
 })

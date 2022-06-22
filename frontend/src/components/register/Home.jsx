@@ -6,11 +6,15 @@ import Draggable  from 'react-draggable';
 import '../register/Home.css';
 import 'animate.css';
 
+import { sessionAdd } from '../../storeToolkit/sessionSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Home() {
-
   const [username, setUsername] = useState('')
   const [userpass, setUserpass] = useState('')
+
+  const session = useSelector((state) => state.session)
+  const dispatch = useDispatch()
 
   const fade = useRef()
   const navigate = useNavigate()
@@ -23,9 +27,9 @@ function Home() {
     setUserpass(event.target.value)     
   }
 
-  const goFetch = () => {
+  const goFetch = async () => {
     if(username && userpass) {
-      fetch('http://localhost:4000/', {
+     fetch('http://localhost:4000/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -34,9 +38,13 @@ function Home() {
           password: userpass
         }),
       })
+
+      // const awaitSession = await response.json()
+
+
       fade.current.className = 'row animate__fadeOut animate__delay-3s'
       setTimeout(() => {
-        navigate('/intro')
+          navigate('/prologue')
       }, 3000);
     }
   }

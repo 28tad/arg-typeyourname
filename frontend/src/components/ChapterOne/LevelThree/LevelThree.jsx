@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { gsap } from "gsap";
 
 let duration = 7
-function App() {
+function LevelThree() {
 
   const {register, handleSubmit} = useForm()
  const [hidden, setHidden] = useState(false)
@@ -195,92 +195,92 @@ function onSubmit(data) {
 }
 
   return (
-    <div className="App" >
+    <div className="LevelThree" >
       <div className ='Bug' onClick={letsMove}>
 <div className="wrapper">
   <div className="boxes">
-    <div className="box css-box"><img src="bug/stag+Beetle01.png" alt=''></img></div>
-    <div className="box css-box"><img src="bug/stag+Beetle01.png" alt=''></img></div>
+    <div className="box css-box"><img src="../bug/stag+Beetle01.png" alt=''/></div>
+    <div className="box css-box"><img src="../bug/stag+Beetle01.png" alt=''></img></div>
 
 </div>
 </div>
 <div className="wrapper">
   <div className="boxes">
-    <div className="boxA css-box"><img src="bug/stag+Beetle02.png" alt=''></img></div>
-    <div className="boxA css-box"><img src="bug/stag+Beetle02.png" alt=''></img></div>
+    <div className="boxA css-box"><img src="../bug/stag+Beetle02.png" alt=''></img></div>
+    <div className="boxA css-box"><img src="../bug/stag+Beetle02.png" alt=''></img></div>
 </div>
 </div>
 
 <div className="wrapper">
   <div className="boxes">
-    <div className="boxB css-box"><img src="bug/stag+Beetle03.png" alt=''></img></div>
-    <div className="boxB css-box"><img src="bug/stag+Beetle03.png" alt=''></img></div>
+    <div className="boxB css-box"><img src="../bug/stag+Beetle03.png" alt=''></img></div>
+    <div className="boxB css-box"><img src="../bug/stag+Beetle03.png" alt=''></img></div>
 </div>
 </div>
 
 <div className="wrapper">
   <div className="boxes">
-    <div className="boxC css-box"><img src="bug/stag+Beetle04.png" alt=''></img></div>
-    <div className="boxC css-box"><img src="bug/stag+Beetle04.png" alt=''></img></div>
+    <div className="boxC css-box"><img src="../bug/stag+Beetle04.png" alt=''></img></div>
+    <div className="boxC css-box"><img src="../bug/stag+Beetle04.png" alt=''></img></div>
 </div>
 </div>
 
 <div className="wrapper">
   <div className="boxes">
-    <div className="boxD css-box"><img src="bug/stag+Beetle05.png" alt=''></img></div>
-    <div className="boxD css-box"><img src="bug/stag+Beetle05.png" alt=''></img></div>
+    <div className="boxD css-box"><img src="../bug/stag+Beetle05.png" alt=''></img></div>
+    <div className="boxD css-box"><img src="../bug/stag+Beetle05.png" alt=''></img></div>
 </div>
 </div>
 
 <div className="wrapper">
   <div className="boxes">
-    <div className="boxE css-box"><img src="bug/stag+Beetle06.png" alt=''></img></div>
-    <div className="boxE css-box"><img src="bug/stag+Beetle06.png" alt=''></img></div>
+    <div className="boxE css-box"><img src="../bug/stag+Beetle06.png" alt=''></img></div>
+    <div className="boxE css-box"><img src="../bug/stag+Beetle06.png" alt=''></img></div>
 </div>
 </div>
 <div className="wrapper">
 <div className="boxes">
-    <div className="boxF css-box"><img src="bug/stag+Beetle07.png" alt=''></img></div>
-    <div className="boxF css-box"><img src="bug/stag+Beetle07.png" alt=''></img></div>
+    <div className="boxF css-box"><img src="../bug/stag+Beetle07.png" alt=''></img></div>
+    <div className="boxF css-box"><img src="../bug/stag+Beetle07.png" alt=''></img></div>
 </div>
 </div>
 <div className="wrapper">
 <div className="boxes">
-    <div className="boxG css-box"><img src="bug/stag+Beetle08.png" alt=''></img></div>
-    <div className="boxG css-box"><img src="bug/stag+Beetle08.png" alt=''></img></div>
+    <div className="boxG css-box"><img src="../bug/stag+Beetle08.png" alt=''></img></div>
+    <div className="boxG css-box"><img src="../bug/stag+Beetle08.png" alt=''></img></div>
 </div>
 </div>
 
 <div className="wrapper">
 <div className="boxes">
-    <div className="boxH css-box"><img src="bug/stag+Beetle09.png" alt=''></img></div>
-    <div className="boxH css-box"><img src="bug/stag+Beetle09.png" alt=''></img></div>
+    <div className="boxH css-box"><img src="../bug/stag+Beetle09.png" alt=''></img></div>
+    <div className="boxH css-box"><img src="../bug/stag+Beetle09.png" alt=''></img></div>
 </div>
 </div>
 
 <div className="wrapper">
 <div className="boxes">
-    <div className="boxI css-box"><img src="bug/stag+Beetle10.png" alt=''></img></div>
-    <div className="boxI css-box"><img src="bug/stag+Beetle10.png" alt=''></img></div>
+    <div className="boxI css-box"><img src="../bug/stag+Beetle10.png" alt=''></img></div>
+    <div className="boxI css-box"><img src="../bug/stag+Beetle10.png" alt=''></img></div>
 </div>
 </div>
 <div className="wrapper">
 <div className="boxes">
-    <div className="boxJ css-box"><img src="bug/stag+Beetle11.png" alt=''></img></div>
-    <div className="boxJ css-box"><img src="bug/stag+Beetle11.png" alt=''></img></div>
+    <div className="boxJ css-box"><img src="../bug/stag+Beetle11.png" alt=''></img></div>
+    <div className="boxJ css-box"><img src="../bug/stag+Beetle11.png" alt=''></img></div>
 </div>
 </div>
 <div className="wrapper">
 <div className="boxes">
-    <div className="boxK css-box"><img src="bug/stag+Beetle12.png" alt=''></img></div>
-    <div className="boxK css-box"><img src="bug/stag+Beetle12.png" alt=''></img></div>
+    <div className="boxK css-box"><img src="../bug/stag+Beetle12.png" alt=''></img></div>
+    <div className="boxK css-box"><img src="../bug/stag+Beetle12.png" alt=''></img></div>
 </div>
 </div>
 
 <div className="wrapperL">
 <div className="boxesL">
-    <div className="boxL"><img src="bug/stag+Beetle13.png" alt=''></img></div>
-    <div className="boxL"><img src="bug/stag+Beetle13.png" alt=''></img></div>
+    <div className="boxL"><img src="../bug/stag+Beetle13.png" alt=''></img></div>
+    <div className="boxL"><img src="../bug/stag+Beetle13.png" alt=''></img></div>
 </div>
 </div>
 </div>
@@ -312,4 +312,4 @@ function onSubmit(data) {
   );
 }
 
-export default App;
+export default LevelThree;
