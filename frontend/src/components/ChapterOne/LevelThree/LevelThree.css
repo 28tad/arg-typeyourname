@@ -99,6 +99,12 @@ overflow: hidden;
   flex-direction:row;
 
   justify-content: center;
+
+  font-weight: 900;
+  background: #ffffff ;
+  text-align: center;
+
+  font-size: 21px;
 }
 .inputes{
 

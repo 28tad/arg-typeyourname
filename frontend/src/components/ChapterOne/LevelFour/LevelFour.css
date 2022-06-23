@@ -84,17 +84,28 @@ body {
   border: 0px;
   padding: 0px;
 
+  font-size: 21px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  background: #ffffff ;
+  text-align: center;
+
 
  }
  button {
 
-  width: 50px;
+  width: 100px;
   height: 50px;
   background-color: white;
   position: relative; 
   margin: 0px;
   padding: 0px;
   border: 0px;
+  font-weight: 900;
+  background: #ffffff ;
+  text-align: center;
+
+  font-size: 21px;
   
  }
  .form {
@@ -104,4 +115,10 @@ body {
 	align-items: center;
   position: relative; 
   top: -750px;
+ }
+
+ .inputs {
+
+  display:flex;
+  align-items: center;
  }
