@@ -1,40 +1,36 @@
 import React, { useState} from 'react'
-import './LevelFour.css';
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import './LevelFour.css';
+
 function LevelFour() {
 const videoArr = ['eve.mp4', 'str.mp4', 'commercial.mp4', 'metr.mp4', 'tz.mp4', 'static.mp4' ]
-const navigate = useNavigate()
-
 
 const {register, handleSubmit} = useForm()
-  const [video, setVideo] = useState(0)
-  const [deg, setDeg] = useState(0)
-  const [turnOnOf, setTurn] =useState(false)
-  const [hidden, setHidden] = useState(false)
+const navigate = useNavigate()
 
- 
+const [hidden, setHidden] = useState(false)
+const [turnOnOf, setTurn] =useState(false)
+const [video, setVideo] = useState(0)
+const [deg, setDeg] = useState(0)
 
   function handleVideoChange() {
     
    setVideo((video) => video = (video+1) % videoArr.length)
    setDeg(deg => deg + 60)
-    console.log(videoArr[video])
   }
 
   function handleTurn() {
     setTurn(a => a= !a)
   }
   
-
 async function onSubmit(data) {
   let answer = ''
   for(let i=1; i<=3; i++) {
     answer = answer + data[`${i}`]
   }
-
 
   const response = await fetch('http://localhost:4000/answer/4', {
     method: 'POST',
@@ -44,7 +40,6 @@ async function onSubmit(data) {
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
   })
-  console.log(response.status);
   
   if (response.status === 200) {
     console.log('Молорик');
@@ -53,17 +48,13 @@ async function onSubmit(data) {
     }, 3000);
   } else {
     const rightAnswer = await response.json();
-    console.log(rightAnswer);
     console.log(rightAnswer[0].body);
-  }
-  console.log(answer)
-  
+  }  
 }
-
 
   return (
     <> 
-    <div className='everything'>
+    <div className='everything animate__flash'>
     <div className='holderForTV'>
     <div className='tv'>
       <img className='tv' src='../tv/tv_clear3.png' alt=''></img>
@@ -89,19 +80,18 @@ async function onSubmit(data) {
 
       {hidden && 
       <div className='form'>
-      <form type='submit' onSubmit={handleSubmit(onSubmit)}>
-      <div className='inputs'>
-        <input {...register('1')} type='text' id='number1' className='inputNumber' maxLength={1}></input>
-        <input {...register('2')} type='text' id='number1' className='inputNumber' maxLength={1}></input>
-        <input {...register('3')} type='text' id='number1' className='inputNumber' maxLength={1}></input>
-        <button className='buttonInput' type="submit">try</button>
-      </div>
+        <form type='submit' onSubmit={handleSubmit(onSubmit)}>
+          <div className='inputs'>
+            <input {...register('1')} type='text' id='number1' className='inputNumber' maxLength={1}></input>
+            <input {...register('2')} type='text' id='number1' className='inputNumber' maxLength={1}></input>
+            <input {...register('3')} type='text' id='number1' className='inputNumber' maxLength={1}></input>
+            <button className='buttonInput' type="submit">try</button>
+          </div>
       
-      </form>
+        </form>
       </div>
       }
       
-
         </div>
         </div>
       </>
