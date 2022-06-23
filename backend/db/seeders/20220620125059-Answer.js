@@ -13,13 +13,13 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      answer: 'answer3',
+      answer: '9788070217740',
       sublevel_id: 3,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
-      answer: 'answer4',
+      answer: 'бдр',
       sublevel_id: 4,
       createdAt: new Date(),
       updatedAt: new Date(),
