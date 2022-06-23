@@ -2,14 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Brightness1Icon from '@mui/icons-material/Brightness1';
+import { Box, Typography } from '@mui/material';
 
 import { gsap } from 'gsap';
 
 import { countIncrement, fetchPhrases, deletePhrase } from '../../../storeToolkit/markSlice';
-
 
 import './LevelOne.css';
 import 'animate.css';
@@ -24,6 +22,7 @@ function LevelOne() {
   const dispatch = useDispatch()
   
   const markRef = useRef()
+  const fade = useRef()
   const placeHolderRef = useRef(null);
 
   useEffect(() => {
@@ -51,16 +50,14 @@ function LevelOne() {
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
         })
-        // console.log(response.status);
         
         if (response.status === 200) {
-          console.log('Молорик');
+          fade.current.className = 'animate__animated animate__zoomOutRight'
           setTimeout(() => {
             navigate('/chapterone/betweenone')
           }, 3000);
         } else {
           const rightAnswer = await response.json();
-          console.log(rightAnswer);
           console.log(rightAnswer[0].body);
         }
       } 
@@ -89,14 +86,14 @@ function LevelOne() {
         <div className='row' style={{margin: 'auto'}}>
           <Box className='animate__animated animate__hinge animate__delay-2s'>
             <Typography variant="h2" style={{
-      color: 'white', 
-      fontSize: '55px',
-      fontFamily: 'Source Sans Pro, sans-serif',
-      textAlign: 'center',
-      letterSpacing: '5px',
-      fontWeight: '1000',
-      marginTop: '400px'
-      }} gutterBottom component="div">
+                  color: 'white', 
+                  fontSize: '55px',
+                  fontFamily: 'Source Sans Pro, sans-serif',
+                  textAlign: 'center',
+                  letterSpacing: '5px',
+                  fontWeight: '1000',
+                  marginTop: '400px'
+                  }} gutterBottom component="div">
 
               ГЛАВА ПЕРВАЯ <br />
               "Искусство"
@@ -106,17 +103,17 @@ function LevelOne() {
         </div>
       
   :
-        <div className='row' style={{margin: 'auto'}}>
+        <div ref={fade} className='row' style={{margin: 'auto'}}>
           <Box className='animate__animated animate__backInUp' >
             <Typography variant="h2" style={{
-      color: 'white', 
-      fontSize: '25px',
-      fontFamily: 'Source Sans Pro, sans-serif',
-      textAlign: 'center',
-      letterSpacing: '5px',
-      fontWeight: '1000',
-      marginTop: '250px'
-      }} gutterBottom component="div"> 
+                  color: 'white', 
+                  fontSize: '25px',
+                  fontFamily: 'Source Sans Pro, sans-seri f',
+                  textAlign: 'center',
+                  letterSpacing: '5px',
+                  fontWeight: '1000',
+                  marginTop: '250px'
+                  }} gutterBottom component="div"> 
       
               35 39 B0 20 42D 442 43E 20 43C 435 441 442 43E 20 441 432 44F 437 430 <br />
               43D 43E 20 441 20 43C 43E 435 439 20 434 435 44F 442 435 43B 44C 43D <br />
@@ -170,7 +167,6 @@ function LevelOne() {
         </div>
   }
     </>
-
   );
 }
 
