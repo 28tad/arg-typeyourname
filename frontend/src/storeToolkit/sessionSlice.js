@@ -2,8 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   name: "User",
-  session: {},
-  status: '',
+  session: undefined,
+  status: false,
+  redirect: true,
   loading: false
 }
 

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 // import { Provider } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,12 +21,34 @@ import LevelFour from '../ChapterOne/LevelFour/LevelFour.jsx';
 function App() {
   const dispatch = useDispatch()
   const session = useSelector((state) => state.session)
+  const navigate = useNavigate();
 
 
   useEffect(() => {
     dispatch(fetchSession())
-  
   }, [dispatch])
+
+  // console.log(session);
+
+  
+  // if (!session.session) {
+  //   return <div className='App'><Load/></div>
+  
+  // }
+
+  // if (session.session && !('user' in session.session)) {
+  //   return <div className='App'><Home/></div>
+  // }
+
+  if(session.redirect == true) {
+    // return navigate('/')
+    return <div className='App'><Load session={session.redirect}/></div>
+
+  }
+
+  // if ('user' in session.session) {
+  //   return <div className='App'><Load/></div>
+  // }
 
   return (
 
@@ -34,15 +56,15 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/intro" element={'user' in session.session ? <Intro/> : <Load/>}/>
+          <Route path="/intro" element={<Intro/>}/>
           <Route path="/prologue" element={<Prologue/>}/>
-          <Route path="/chapterone/levelone" element={'user' in session.session ? <LevelOne/> : <Load/>}/>
-          <Route path="/chapterone/betweenone" element={'user' in session.session ? <BetweenOne/> : <Load/>}/>
-          <Route path="/chapterone/leveltwo" element={'user' in session.session ? <LevelTwo/> : <Load/>}/>
-          <Route path="/chapterone/hiddenlevel" element={'user' in session.session ? <HiddenLevel/> : <Load/>}/>
-          <Route path="/chapterone/betweentwo" element={'user' in session.session ? <BetweenTwo/> : <Load/>}/>
-          <Route path="/chapterone/levelthree" element={'user' in session.session ? <LevelThree/> : <Load/>}/>
-          <Route path="/chapterone/levelfour" element={'user' in session.session ? <LevelFour/> : <Load/>}/>
+          <Route path="/chapterone/levelone" element={<LevelOne/>}/>
+          <Route path="/chapterone/betweenone" element={<BetweenOne/>}/>
+          <Route path="/chapterone/leveltwo" element={<LevelTwo/>}/>
+          <Route path="/chapterone/hiddenlevel" element={<HiddenLevel/>}/>
+          <Route path="/chapterone/betweentwo" element={<BetweenTwo/>}/>
+          <Route path="/chapterone/levelthree" element={<LevelThree/>}/>
+          <Route path="/chapterone/levelfour" element={<LevelFour/>}/>
 
         </Routes>
 
