@@ -3,12 +3,16 @@ import './LevelThree.css';
 import React, {useState} from "react";
 import { useForm } from 'react-hook-form';
 import { gsap } from "gsap";
+import { useNavigate } from 'react-router-dom';
 
 let duration = 7
 function LevelThree() {
 
   const {register, handleSubmit} = useForm()
- const [hidden, setHidden] = useState(false)
+  const [hidden, setHidden] = useState(false)
+
+const navigate = useNavigate()
+
  const letsMove = () =>{
     gsap.set(".box", {
       x: (i) => i * (-570) 
@@ -184,14 +188,34 @@ function LevelThree() {
     
   }
 
+async function onSubmit(data) {
 
-function onSubmit(data) {
   let answer = ''
   for(let i=1; i<=13; i++) {
     answer = answer + data[`${i}`]
   }
-  console.log(answer)
-  return answer
+  console.log(answer);
+
+  const response = await fetch('http://localhost:4000/answer/3', {
+          method: 'POST',
+          body: JSON.stringify({
+             answer: answer
+            }),  
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+        })
+        console.log(response.status);
+        
+        if (response.status === 200) {
+          console.log('Молорик');
+          setTimeout(() => {
+            navigate('/chapterone/levelfour')
+          }, 3000);
+        } else {
+          const rightAnswer = await response.json();
+          console.log(rightAnswer);
+          console.log(rightAnswer[0].body);
+        }
 }
 
   return (

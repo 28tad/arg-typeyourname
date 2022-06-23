@@ -13,15 +13,12 @@ import { countIncrement, fetchPhrases } from '../../../storeToolkit/markSlice';
 
 import './LevelOne.css';
 import 'animate.css';
-// import { fetchSession } from '../../../storeToolkit/sessionSlice';
 
 function LevelOne() {
   const [phraseBuff, setPhraseBuff] = useState('');
   const [chapter, setChapter] = useState(false)
   
-  const session = useSelector((state) => state.session)
   const Mark = useSelector((state) => state.mark);
-  console.log(session);
   
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -31,15 +28,6 @@ function LevelOne() {
 
   useEffect(() => {
     dispatch(fetchPhrases(2))
-    // dispatch(fetchSession())
-    // setTimeout(() => {
-    //   const obj = session.session
-    //   console.log('2', 'user' in obj);
-    //   if('user' in obj === false) {
-    //     navigate('/')
-    //   }
-      
-    // }, 5000);
 
   }, [])
   
