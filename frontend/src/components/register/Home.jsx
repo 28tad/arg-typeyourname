@@ -1,19 +1,19 @@
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Draggable  from 'react-draggable'; 
+import { fetchSession } from '../../storeToolkit/sessionSlice';
 import '../register/Home.css';
 import 'animate.css';
 
 import { sessionAdd } from '../../storeToolkit/sessionSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function Home() {
   const [username, setUsername] = useState('')
   const [userpass, setUserpass] = useState('')
 
-  const session = useSelector((state) => state.session)
   const dispatch = useDispatch()
 
   const fade = useRef()
@@ -27,9 +27,14 @@ function Home() {
     setUserpass(event.target.value)     
   }
 
+  useEffect(() => {
+    dispatch(fetchSession())
+  
+  }, [dispatch])
+
   const goFetch = async () => {
     if(username && userpass) {
-     fetch('http://localhost:4000/', {
+     const response = await fetch('http://localhost:4000/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -39,7 +44,9 @@ function Home() {
         }),
       })
 
-      // const awaitSession = await response.json()
+      const awaitSession = await response.json()
+      dispatch(sessionAdd(awaitSession))
+      console.log(awaitSession);
 
 
       fade.current.className = 'row animate__fadeOut animate__delay-3s'
@@ -54,7 +61,7 @@ function Home() {
     <div ref={fade} className='row animate__fadeIn animate__delay-3s' style={{margin: 'auto'}}>
 
       <Draggable>
-        <img className='tree' src='tree.jpg' alt='tree'/>
+        <img className='tree' src='../tree.jpg' alt='tree'/>
       </Draggable>
 
       <Draggable>
@@ -79,7 +86,7 @@ function Home() {
       onClick={goFetch}
       type="button" 
       className='input' 
-      value={'tap me'}
+      value={'TAP ME'}
       />
       </Draggable>
 
@@ -88,7 +95,7 @@ function Home() {
       onChange={handleInputOne}
       className='inputone' 
       type="text" 
-      placeholder='name'
+      placeholder='NAME'
       />
       </Draggable>
 
@@ -97,7 +104,7 @@ function Home() {
       onChange={handleInputTwo}
       className='inputone' 
       type="text" 
-      placeholder='password'
+      placeholder='PASSWORD'
       />
       </Draggable>
 
@@ -125,6 +132,30 @@ function Home() {
       />
       </Draggable>
   
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="password" 
+      readOnly="readonly"
+      />
+      </Draggable>
+
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="password" 
+      readOnly="readonly"
+      />
+      </Draggable>
+
+      <Draggable>
+        <input 
+      className='inputone' 
+      type="password" 
+      readOnly="readonly"
+      />
+      </Draggable>
+
       <Draggable>
         <input 
       className='inputone' 

@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   name: "User",
-  session: {},
+  session: undefined,
   status: '',
-  loading: false
+  loading: false,
 }
 
 export const fetchSession = createAsyncThunk('User/sessionSlice', async () => {
@@ -24,7 +24,8 @@ export const sessionSlice = createSlice({
 
   reducers: {
     sessionAdd: (state, action) => {
-      state.session = action.payload
+      state.session.user = action.payload
+      // state.user = action.payload
     },
   },
   extraReducers(builder) {
