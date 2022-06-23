@@ -1,23 +1,23 @@
 import React, { useState, useRef, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom'
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { useDispatch } from 'react-redux';
+
+import { Box, Typography } from '@mui/material';
+
+import { fetchSession, sessionAdd } from '../../storeToolkit/sessionSlice';
 import Draggable  from 'react-draggable'; 
-import { fetchSession } from '../../storeToolkit/sessionSlice';
+
 import '../register/Home.css';
 import 'animate.css';
-
-import { sessionAdd } from '../../storeToolkit/sessionSlice';
-import { useDispatch } from 'react-redux';
 
 function Home() {
   const [username, setUsername] = useState('')
   const [userpass, setUserpass] = useState('')
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const fade = useRef()
-  const navigate = useNavigate()
 
   const handleInputOne = (event) => {
     setUsername(event.target.value)
@@ -46,10 +46,9 @@ function Home() {
 
       const awaitSession = await response.json()
       dispatch(sessionAdd(awaitSession))
-      console.log(awaitSession);
-
 
       fade.current.className = 'row animate__fadeOut animate__delay-3s'
+
       setTimeout(() => {
           navigate('/prologue')
       }, 3000);
@@ -67,13 +66,13 @@ function Home() {
       <Draggable>
         <Box>
           <Typography variant="h2" style={{
-      color: 'white', 
-      fontSize: '100px',
-      fontFamily: 'Source Sans Pro, sans-serif',
-      textAlign: 'center',
-      letterSpacing: '30px',
-      fontWeight: '1000',
-      }} gutterBottom component="div">
+              color: 'white', 
+              fontSize: '100px',
+              fontFamily: 'Source Sans Pro, sans-serif',
+              textAlign: 'center',
+              letterSpacing: '30px',
+              fontWeight: '1000',
+              }} gutterBottom component="div">
 
             TYPE YOUR NAME
 

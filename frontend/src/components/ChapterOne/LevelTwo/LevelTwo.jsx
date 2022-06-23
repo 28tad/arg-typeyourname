@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring'
 import ReactCardFlip from 'react-card-flip';
 
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import { Box, Typography } from '@mui/material';
 
 import '../LevelTwo/LevelTwo.css'
 
@@ -36,7 +35,6 @@ function LevelTwo() {
 { chapter ?
 
         <div className='rowtwo'>
-       
           <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
             <div>
               <img onClick={handleFlip} className='krik' src='../krik.jpg' alt='krik'/>
@@ -74,7 +72,6 @@ function LevelTwo() {
           https://www.make-info.com/hide-data-in-image-steghide/
 
           </Typography>
-
         </div>
 
 :
@@ -83,14 +80,14 @@ function LevelTwo() {
        <div className='row' style={{margin: 'auto'}}>
           <Box>
             <Typography variant="h2" style={{
-      color: 'white', 
-      fontSize: '55px',
-      fontFamily: 'Source Sans Pro, sans-serif',
-      textAlign: 'center',
-      letterSpacing: '5px',
-      fontWeight: '1000',
-      marginTop: '400px'
-      }} gutterBottom component="div">
+                color: 'white', 
+                fontSize: '55px',
+                fontFamily: 'Source Sans Pro, sans-serif',
+                textAlign: 'center',
+                letterSpacing: '5px',
+                fontWeight: '1000',
+                marginTop: '400px'
+                }} gutterBottom component="div">
 
               <br />
               Страх
