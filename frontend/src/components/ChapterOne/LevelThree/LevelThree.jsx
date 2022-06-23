@@ -194,7 +194,6 @@ async function onSubmit(data) {
   for(let i=1; i<=13; i++) {
     answer = answer + data[`${i}`]
   }
-  console.log(answer);
 
   const response = await fetch('http://localhost:4000/answer/3', {
           method: 'POST',

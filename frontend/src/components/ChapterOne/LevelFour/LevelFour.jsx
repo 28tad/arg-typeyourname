@@ -2,9 +2,12 @@ import React, { useState} from 'react'
 import './LevelFour.css';
 
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 function LevelFour() {
 const videoArr = ['eve.mp4', 'str.mp4', 'commercial.mp4', 'metr.mp4', 'tz.mp4', 'static.mp4' ]
+const navigate = useNavigate()
+
 
 const {register, handleSubmit} = useForm()
   const [video, setVideo] = useState(0)
@@ -26,13 +29,35 @@ const {register, handleSubmit} = useForm()
   }
   
 
-function onSubmit(data) {
+async function onSubmit(data) {
   let answer = ''
   for(let i=1; i<=3; i++) {
     answer = answer + data[`${i}`]
   }
+
+
+  const response = await fetch('http://localhost:4000/answer/4', {
+    method: 'POST',
+    body: JSON.stringify({
+       answer: answer
+      }),  
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+  })
+  console.log(response.status);
+  
+  if (response.status === 200) {
+    console.log('Молорик');
+    setTimeout(() => {
+      navigate('/')
+    }, 3000);
+  } else {
+    const rightAnswer = await response.json();
+    console.log(rightAnswer);
+    console.log(rightAnswer[0].body);
+  }
   console.log(answer)
-  return answer
+  
 }
 
 
