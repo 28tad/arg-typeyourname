@@ -306,7 +306,7 @@ function onSubmit(data) {
   
   
 </div>
-<button className='button' type="submit" >try</button>
+<button className='buttonInput' type="submit" >try</button>
 </form>
 }
     </div>
