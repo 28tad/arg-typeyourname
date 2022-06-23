@@ -37,7 +37,7 @@ function ChapterOne() {
     if(value >= 70 && value <= 80 ) {
       console.log(Mark.phrase);
       setNotify(1)
-      gsap.to(badgeEl.current, {duration: 1, scale: 2 });
+      gsap.to(badgeEl.current, {duration: 1, scale: 5 });
       gsap.to(el.current, {duration: 1,color: 'green'});
       setPlaceholder(`Иногда это не совсем воспоминания, скорее, чувства, самое сильное – желание чего-то искренне желать. Будто каждый день я просыпаюсь и живу свою жизнь, но хотел бы что-то сделать иначе, будто сегодня день, когда я должен пойти другим маршрутом, повернуть в другую сторону, и моя жизнь изменится, станет иной, новой, яркой. 
       Но я не знаю чего желать, что вызывало бы во мне искреннюю страсть, куда мне все-таки повернуть, что мне с собой сделать. 
@@ -56,7 +56,7 @@ function ChapterOne() {
     <div className='row'>
       <Box sx={{ width: 500 }}>
         <Slider
-          style={{ color: "white"}}
+          style={{ color: "white" }}
           // aria-label="Restricted values"
           defaultValue={20}
           // valueLabelFormat={valueLabelFormat}
@@ -65,10 +65,10 @@ function ChapterOne() {
           valueLabelDisplay="off"
         />
       </Box>
-        <Badge ref={badgeEl} badgeContent={notify} style={{ color: "white"}}>
+        <Badge ref={badgeEl} badgeContent={notify} style={{ color: "white", position: "absolute", top: "10%"}}>
          <MailIcon ref={el} style={{ color: "white"}}/>
         </Badge>
-        <div style={{ color: "white"}}>
+        <div style={{ color: "white", width: "1000px", fontSize: "30px"}}>
           {placeholder}
         </div>
     </div>
