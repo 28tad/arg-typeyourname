@@ -8,7 +8,7 @@ import Brightness1Icon from '@mui/icons-material/Brightness1';
 
 import { gsap } from 'gsap';
 
-import { countIncrement, fetchPhrases } from '../../../storeToolkit/markSlice';
+import { countIncrement, fetchPhrases, deletePhrase } from '../../../storeToolkit/markSlice';
 
 
 import './LevelOne.css';
@@ -77,6 +77,7 @@ function LevelOne() {
 
     } else if (Mark.count > Mark.phrase[0].length) {
       gsap.to(markRef.current, {opacity: 0, duration: 2})
+      dispatch(deletePhrase())
     }
   }
 
