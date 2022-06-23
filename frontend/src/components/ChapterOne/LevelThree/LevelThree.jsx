@@ -196,6 +196,7 @@ async function onSubmit(data) {
     answer = answer + data[`${i}`]
   }
 
+  console.log(answer);
   const response = await fetch('http://localhost:4000/answer/3', {
           method: 'POST',
           body: JSON.stringify({
@@ -204,7 +205,8 @@ async function onSubmit(data) {
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
         })
-        
+
+        console.log(response.status);
         if (response.status === 200) {
           console.log('Молорик');
           setTimeout(() => {
