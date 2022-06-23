@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -13,21 +13,37 @@ import { countIncrement, fetchPhrases } from '../../../storeToolkit/markSlice';
 
 import './LevelOne.css';
 import 'animate.css';
+// import { fetchSession } from '../../../storeToolkit/sessionSlice';
 
 function LevelOne() {
-
+  const [phraseBuff, setPhraseBuff] = useState('');
+  const [chapter, setChapter] = useState(false)
+  
+  const session = useSelector((state) => state.session)
+  const Mark = useSelector((state) => state.mark);
+  console.log(session);
+  
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [phraseBuff, setPhraseBuff] = useState('');
-  const Mark = useSelector((state) => state.mark);
+  
   const markRef = useRef()
   const placeHolderRef = useRef(null);
-  const [chapter, setChapter] = useState(false)
 
   useEffect(() => {
     dispatch(fetchPhrases(2))
+    // dispatch(fetchSession())
+    // setTimeout(() => {
+    //   const obj = session.session
+    //   console.log('2', 'user' in obj);
+    //   if('user' in obj === false) {
+    //     navigate('/')
+    //   }
+      
+    // }, 5000);
+
   }, [])
   
+
   const changeRender = setTimeout(() => {
     setChapter(true)
     if(chapter === true) {
@@ -47,7 +63,7 @@ function LevelOne() {
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
         })
-        console.log(response.status);
+        // console.log(response.status);
         
         if (response.status === 200) {
           console.log('Молорик');
@@ -79,7 +95,6 @@ function LevelOne() {
   return (
 
     <>
-
       {!chapter ?
     
         <div className='row' style={{margin: 'auto'}}>

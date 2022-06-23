@@ -18,7 +18,7 @@ homeRoute.post('/', async (req, res) => {
         req.session.user = userName;
         const level = UserSublevel.findAll({ where: { user_id: userName.id }, order: [['id', 'DESC']], limit: 1 });
 
-        res.status(200).json({ sublevel_id: level[0].sublevel_id });
+        res.status(200).json(userName);
       } else {
         res.status(401).json({ text: `Я уже знаком с ${username}, и ты не он` });
       }
@@ -27,7 +27,7 @@ homeRoute.post('/', async (req, res) => {
         username, password: await bcrypt.hash(password, 5), isActive: true,
       });
       req.session.user = newUser;
-      res.status(200).json('auth');
+      res.status(200).json(newUser);
     }
   } catch (error) { console.log(error.message); }
 });
