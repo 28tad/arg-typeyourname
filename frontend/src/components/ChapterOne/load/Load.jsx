@@ -1,14 +1,12 @@
-import React from 'react';
-import { TailSpin, BallTriangle, Bars, Grid, Puff, Oval, ThreeDots, Circles, Rings} from  'react-loader-spinner'
+import React, { useEffect } from 'react';
+import { TailSpin, BallTriangle, Bars, Puff, ThreeDots, Circles, Rings} from  'react-loader-spinner'
 import { useNavigate } from 'react-router-dom';
 
-function Load() {
 
-  const navigate = useNavigate()
+function Load() {
   
-    // setTimeout(() => {
-    //   navigate('/')
-    // }, 3000);
+  // const navigate = useNavigate()
+  
 
   return (
 
