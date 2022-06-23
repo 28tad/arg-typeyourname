@@ -1,6 +1,5 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
-// import { Provider } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSession } from '../../storeToolkit/sessionSlice';
 
@@ -21,24 +20,21 @@ import LevelFour from '../ChapterOne/LevelFour/LevelFour.jsx';
 function App() {
   const dispatch = useDispatch()
   const session = useSelector((state) => state.session)
-
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+  const location = useLocation();
 
 
   useEffect(() => {
     dispatch(fetchSession())
-
+  
   }, [dispatch])
-  
-  if (!session.session) return <div className='App'><Load/></div>;
-  if (session.session && !('user' in session.session)) {
-  
-    return <div className='App'><Home/></div>;
-    // return <div className='App'><Load sess={true} /></div>;
-  }
-  
 
-  
+
+  if (!session.session) return <div className='App'><Load/></div>;
+  if (session.session && !('user' in session.session) && location.pathname !== '/') {
+    navigate('/')
+    return <div className='App'><Home /></div>;
+  }
 
   return (
 
@@ -60,6 +56,5 @@ function App() {
       </div>
   );
 }
-
 
 export default App;

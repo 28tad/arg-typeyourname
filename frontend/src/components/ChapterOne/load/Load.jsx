@@ -1,30 +1,19 @@
-import React, { useEffect } from 'react';
-import { TailSpin, BallTriangle, Bars, Puff, ThreeDots, Circles, Rings} from  'react-loader-spinner'
-import { useNavigate } from 'react-router-dom';
-
+import React, { useRef } from 'react';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import gsap from "gsap"
+import { useSelector } from 'react-redux';
 
 function Load() {
-  
-  // const navigate = useNavigate()
-  
+  const session = useSelector((state) => state.session)
+  console.log(session.redirect);
+
+  const refEye = useRef()
+
+  gsap.to(refEye.current, { scale: 10})
 
   return (
-
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: '450px',
-      letterSpacing: '30px',
-      }}>
-
-     <TailSpin color="#d8d0ef" height={80} width={80} />
-     <BallTriangle color="#dbdbdb" height={80} width={80} />
-     <Bars color="#f6f6f6" height={80} width={80} />
-     <Puff color="#dbdbdb" height={80} width={80} /> 
-     <ThreeDots color="#dbdbdb" height={80} width={80} />
-     <Circles color="#dbdbdb" height={80} width={80}/>
-     <Rings color="#dbdbdb" height={80} width={80} />
+    <div style={{ color: "white"}}>
+      <RemoveRedEyeIcon ref={refEye} sx={{ position: "absolute",top: "49%", left: "49%"}}/>
     </div>
   );
 }

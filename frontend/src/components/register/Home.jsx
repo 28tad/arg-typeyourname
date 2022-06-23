@@ -8,13 +8,12 @@ import '../register/Home.css';
 import 'animate.css';
 
 import { sessionAdd } from '../../storeToolkit/sessionSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function Home() {
   const [username, setUsername] = useState('')
   const [userpass, setUserpass] = useState('')
 
-  const session = useSelector((state) => state.session)
   const dispatch = useDispatch()
 
   const fade = useRef()
@@ -45,6 +44,9 @@ function Home() {
         }),
       })
 
+      const awaitSession = await response.json()
+      dispatch(sessionAdd(awaitSession))
+      console.log(awaitSession);
 
 
       fade.current.className = 'row animate__fadeOut animate__delay-3s'

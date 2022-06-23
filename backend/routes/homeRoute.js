@@ -7,7 +7,6 @@ homeRoute.get('/', (req, res) => {
 });
 
 homeRoute.post('/', async (req, res) => {
-  console.log(req.body);
   const { username, password } = req.body;
   try {
     const userName = await User.findOne({
