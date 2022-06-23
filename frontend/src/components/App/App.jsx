@@ -33,7 +33,6 @@ function App() {
   if (!session.session) return <div className='App'><Load/></div>;
   if (session.session && !('user' in session.session) && location.pathname !== '/') {
     navigate('/')
-    return <div className='App'><Home /></div>;
   }
 
   return (
