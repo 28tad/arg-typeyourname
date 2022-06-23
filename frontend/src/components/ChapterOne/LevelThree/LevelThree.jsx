@@ -284,6 +284,8 @@ function onSubmit(data) {
 </div>
 </div>
 </div>
+
+<div className='hint'><p>50 04 55 14 25 15</p></div>
 { hidden &&
 <form type='submit' onSubmit={handleSubmit(onSubmit)}>
 <div className="inputNumber" >
@@ -304,7 +306,7 @@ function onSubmit(data) {
   
   
 </div>
-<button className='button' type="submit" >try</button>
+<button className='buttonInput' type="submit" >try</button>
 </form>
 }
     </div>
