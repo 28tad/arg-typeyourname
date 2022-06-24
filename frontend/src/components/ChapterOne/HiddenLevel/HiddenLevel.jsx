@@ -44,7 +44,7 @@ function HiddenLevel() {
       
     } else if (Mark.count >= Mark.phrase[0].length) {
       console.log('11111');
-      gsap.to(circle.current, {x: 500, y: -400, opacity: 0 ,duration: 3, onComplete:fadeOut})
+      gsap.to(circle.current, {x: 500, y: -500, opacity: 0 ,duration: 3, onComplete:fadeOut})
       
       function fadeOut() {
         gsap.to(door.current, { rotateY: 90})
